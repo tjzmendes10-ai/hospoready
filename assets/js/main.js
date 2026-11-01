@@ -146,6 +146,20 @@
   var form = document.getElementById("waitlist-form");
   if (!form) return;
 
+  // Pricing buttons (and ?plan= links) preselect the plan in the form
+  var planSelect = document.getElementById("plan");
+  function selectPlan(plan) {
+    if (!planSelect || !plan) return;
+    for (var i = 0; i < planSelect.options.length; i++) {
+      if (planSelect.options[i].text === plan) planSelect.selectedIndex = i;
+    }
+  }
+  document.querySelectorAll("[data-plan]").forEach(function (link) {
+    link.addEventListener("click", function () { selectPlan(link.getAttribute("data-plan")); });
+  });
+  var planParam = new URLSearchParams(window.location.search).get("plan");
+  if (planParam) selectPlan(planParam);
+
   var status = form.querySelector(".form-status");
   var button = form.querySelector("button[type=submit]");
 

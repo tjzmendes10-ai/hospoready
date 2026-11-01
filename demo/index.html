@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Permit wallet demo – HospoReady</title>
+  <meta name="description" content="Try the HospoReady permit wallet: add your licences and staff certificates, scan a licence photo, and see what's expiring.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../" class="logo"><span class="logo-mark" aria-hidden="true">✓</span> <span class="brand-name">HospoReady</span></a>
+      <nav class="site-nav" aria-label="Main">
+        <a href="../checklist/">Checklist</a>
+        <a href="./" aria-current="page">Demo</a>
+        <a href="../#pricing" class="nav-hide-sm">Pricing</a>
+        <a href="../#waitlist" class="btn btn-small nav-hide-sm">Join the waitlist</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <p class="eyebrow">Interactive demo</p>
+        <h1>Your permit wallet</h1>
+        <p class="lead">Every licence, permit and staff certificate in one place, with a countdown to each expiry.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top: 16px;">
+      <div class="container">
+        <div class="notice" role="note">
+          <span class="notice-icon" aria-hidden="true">🔒</span>
+          <p><strong>Demo only:</strong> your data stays on this device and isn't uploaded anywhere.</p>
+        </div>
+
+        <div class="stat-row" aria-label="Summary">
+          <div class="stat"><span class="stat-num" id="count-ok">0</span><span class="stat-label"><span class="dot ok" aria-hidden="true"></span>Current</span></div>
+          <div class="stat"><span class="stat-num" id="count-warn">0</span><span class="stat-label"><span class="dot warn" aria-hidden="true"></span>Expiring within 60 days</span></div>
+          <div class="stat"><span class="stat-num" id="count-alert">0</span><span class="stat-label"><span class="dot alert" aria-hidden="true"></span>Expired</span></div>
+        </div>
+
+        <div class="demo-toolbar">
+          <button type="button" class="btn" id="add-btn">+ Add item</button>
+          <button type="button" class="btn btn-secondary" id="scan-btn">📸 Scan a licence</button>
+          <button type="button" class="btn btn-plain" id="import-btn">Import from checklist</button>
+          <button type="button" class="btn btn-plain" id="export-btn">Export to CSV</button>
+          <button type="button" class="btn btn-plain btn-danger" id="clear-btn">Clear demo data</button>
+        </div>
+        <p class="status-msg" id="status-msg" role="status" aria-live="polite"></p>
+
+        <section class="wallet-section" aria-labelledby="licences-title">
+          <h2 id="licences-title">Licences, permits &amp; registrations</h2>
+          <ul class="wallet-list" id="licence-list"></ul>
+        </section>
+
+        <section class="wallet-section" aria-labelledby="staff-title">
+          <h2 id="staff-title">Staff certificates</h2>
+          <p class="fine" style="margin-bottom: 14px;">RSA, Food Safety Supervisor and other certificates, tracked person by person.</p>
+          <ul class="wallet-list" id="staff-list"></ul>
+        </section>
+
+        <div class="panel" style="margin-top: 40px; text-align: center;">
+          <h2>Like what you see?</h2>
+          <p class="section-lead" style="margin: 0 auto 20px;">The full version adds reminders by email and SMS, sync across devices and sharing with your team.</p>
+          <a href="../?plan=Pro#waitlist" class="btn">Join the waitlist</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Add / edit dialog -->
+  <dialog id="item-dialog" aria-labelledby="item-dialog-title">
+    <form method="dialog" class="dialog-inner" id="item-form" novalidate>
+      <h2 id="item-dialog-title">Add an item</h2>
+      <input type="hidden" id="f-id">
+      <div class="field">
+        <label for="f-name">Name</label>
+        <input id="f-name" type="text" required placeholder="e.g. Liquor licence">
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="f-type">Type</label>
+          <select id="f-type">
+            <option value="licence">Licence</option>
+            <option value="permit">Permit</option>
+            <option value="registration">Registration</option>
+            <option value="insurance">Insurance</option>
+            <option value="staff">Staff certificate</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-holder">Holder <span class="optional" id="f-holder-hint">(venue or person)</span></label>
+          <input id="f-holder" type="text">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="f-issuer">Issuer</label>
+          <input id="f-issuer" type="text" placeholder="e.g. Your council">
+        </div>
+        <div class="field">
+          <label for="f-number">Licence / certificate number <span class="optional">(optional)</span></label>
+          <input id="f-number" type="text">
+        </div>
+      </div>
+      <div class="field">
+        <label for="f-expiry">Expiry date <span class="optional">(leave blank if it doesn't expire)</span></label>
+        <input id="f-expiry" type="date">
+      </div>
+      <div class="field">
+        <label for="f-notes">Notes <span class="optional">(optional)</span></label>
+        <textarea id="f-notes" rows="3"></textarea>
+      </div>
+      <p class="form-status" id="item-error" role="alert"></p>
+      <div class="dialog-actions">
+        <button type="button" class="btn btn-plain" id="item-cancel">Cancel</button>
+        <button type="submit" class="btn" id="item-save">Save</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Scan dialog -->
+  <dialog id="scan-dialog" aria-labelledby="scan-dialog-title">
+    <div class="dialog-inner">
+      <h2 id="scan-dialog-title">Scan a licence</h2>
+      <p>Upload a clear photo or screenshot of a licence or certificate. The text is read on this device, then we suggest dates and numbers for you to check. Nothing is saved until you confirm.</p>
+      <label class="file-drop" for="scan-file">
+        <strong>Choose a photo or image</strong><br>
+        <span class="fine">JPG, PNG or WebP. Have a PDF? Take a screenshot of the page first.</span><br>
+        <input id="scan-file" type="file" accept="image/*">
+      </label>
+      <img id="scan-preview" class="scan-preview" alt="Preview of the uploaded licence" hidden>
+      <div id="scan-progress-wrap" hidden>
+        <label for="scan-progress" id="scan-progress-label">Reading text…</label>
+        <progress id="scan-progress" class="scan-progress" max="100" value="0"></progress>
+      </div>
+      <p class="form-status" id="scan-status" role="status" aria-live="polite"></p>
+      <div class="suggestions" id="scan-suggestions" hidden>
+        <div>
+          <h3 id="dates-heading">Dates found – pick the expiry date</h3>
+          <div class="chips" id="date-chips" role="group" aria-labelledby="dates-heading"></div>
+        </div>
+        <div>
+          <h3 id="numbers-heading">Possible licence / certificate numbers</h3>
+          <div class="chips" id="number-chips" role="group" aria-labelledby="numbers-heading"></div>
+        </div>
+        <details>
+          <summary>Show all text we read</summary>
+          <p class="ocr-text" id="ocr-text"></p>
+        </details>
+      </div>
+      <div class="dialog-actions">
+        <button type="button" class="btn btn-plain" id="scan-cancel">Cancel</button>
+        <button type="button" class="btn" id="scan-use" disabled>Review &amp; save</button>
+      </div>
+    </div>
+  </dialog>
+
+  <footer class="site-footer">
+    <div class="container">
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="../">Home</a>
+        <a href="../checklist/">Free checklist</a>
+        <a href="../#pricing">Pricing</a>
+        <a href="../#waitlist">Waitlist</a>
+      </nav>
+      <p class="disclaimer"><strong>Information only, not legal advice.</strong> This demo stores data only in your browser. Always confirm renewal requirements with the issuing authority.</p>
+      <p class="copyright">© <span id="year">2026</span> HospoReady. Made in Australia.</p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/demo.js"></script>
+</body>
+</html>
