@@ -1072,3 +1072,25 @@ textarea:focus { border-color: var(--green); }
   a { color: #000; }
   .permit-links a::after { content: " (" attr(href) ")"; font-weight: 400; font-size: 9pt; word-break: break-all; }
 }
+
+/* Pricing: founding member offer */
+.founding-badge {
+  display: inline-block;
+  align-self: flex-start;
+  margin: 0 0 12px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: var(--amber-light);
+  color: var(--amber-text);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+.price .was { font-size: 1.25rem; color: var(--muted); margin-right: 6px; text-decoration-thickness: 2px; }
+.price .per { font-weight: 500; margin-left: 4px; }
+.price-card-featured .price { margin-bottom: 4px; }
+.price-alt { color: var(--muted); font-size: 0.95rem; margin: 0 0 18px; }
+.price-alt strong { color: var(--espresso); }
+.soon-tag-lg { font-size: 0.85rem; padding: 6px 14px; }
+.group-pricing { text-align: center; font-weight: 500; margin: 32px 0 6px; }
+.group-pricing a { font-weight: 700; }
+.price-smallprint { text-align: center; font-size: 0.85rem; color: var(--muted); margin: 0; }

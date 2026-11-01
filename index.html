@@ -246,41 +246,47 @@
     <section class="section pricing" id="pricing">
       <div class="container">
         <h2 class="reveal">Simple pricing</h2>
-        <p class="section-lead reveal"><span class="early-tag">Early-access pricing</span> These prices are a guide for early access and may change before launch.</p>
+        <p class="section-lead reveal">Start free. Upgrade when you want HospoReady to keep track for you.</p>
         <ul class="price-grid">
           <li class="price-card reveal">
             <h3>Free</h3>
             <p class="price"><span class="amount">$0</span></p>
             <ul class="price-features">
-              <li>Personalised permit checklist</li>
-              <li>All 8 states and territories</li>
-              <li>Links to official sources</li>
+              <li>Permit checklist for your state and venue type</li>
+              <li>Links to the official source for each item</li>
             </ul>
-            <a href="checklist/" class="btn btn-secondary btn-full">Try the checklist</a>
+            <a href="checklist/" class="btn btn-secondary btn-full">Try the free checklist</a>
           </li>
           <li class="price-card price-card-featured reveal">
-            <p class="price-badge">Most popular</p>
+            <p class="price-badge">Recommended</p>
             <h3>Pro</h3>
-            <p class="price"><span class="amount">~$19</span> <span class="per">/ month per venue</span></p>
+            <p class="founding-badge">Founding member price, locked in for life</p>
+            <p class="price">
+              <span class="visually-hidden">Was </span><del class="was">$29</del>
+              <span class="visually-hidden">, now </span><span class="amount">$19</span><span class="per">/month per venue</span>
+            </p>
+            <p class="price-alt">or <strong>$190/year</strong> (2 months free)</p>
             <ul class="price-features">
-              <li>Everything in Free</li>
-              <li>Permit wallet for all your licences</li>
-              <li>Photo scanning of licences</li>
-              <li>Reminders before anything expires</li>
-              <li>Staff certificate tracking</li>
+              <li>Permit wallet for every licence and permit</li>
+              <li>Snap-a-photo licence scanning</li>
+              <li>Expiry reminders</li>
+              <li>Staff certificate tracking (RSA, Food Safety Supervisor)</li>
+              <li>Inspection-ready view</li>
             </ul>
             <a href="#waitlist" class="btn btn-full" data-plan="Pro">Join the waitlist</a>
           </li>
           <li class="price-card reveal">
-            <h3>Done For You <span class="soon-tag">Coming soon</span></h3>
-            <p class="price"><span class="amount amount-tba">Price TBA</span></p>
+            <h3>Done For You</h3>
+            <p class="price"><span class="soon-tag soon-tag-lg">Coming soon</span></p>
             <ul class="price-features">
-              <li>Everything in Pro</li>
-              <li>We prepare and lodge your renewals for you</li>
+              <li>We prepare and lodge renewals and applications for you.</li>
             </ul>
             <a href="#waitlist" class="btn btn-secondary btn-full" data-plan="Done For You">Register interest</a>
           </li>
         </ul>
+        <!-- PLACEHOLDER EMAIL: change hello@example.com below to your real address -->
+        <p class="group-pricing reveal">Running more than one venue? <a href="mailto:hello@example.com?subject=HospoReady%20group%20pricing">Get in touch for group pricing.</a></p>
+        <p class="price-smallprint">Early-access pricing. All prices include GST. Nobody is charged until launch.</p>
       </div>
     </section>
 
@@ -342,10 +348,10 @@
           <div class="field">
             <label for="plan">Which plan interests you? <span class="optional">(optional)</span></label>
             <select id="plan" name="plan">
-              <option value="">Not sure yet</option>
               <option>Free</option>
               <option>Pro</option>
               <option>Done For You</option>
+              <option selected>Not sure yet</option>
             </select>
           </div>
           <!-- Honeypot field to reduce spam (Formspree ignores submissions where this is filled) -->
