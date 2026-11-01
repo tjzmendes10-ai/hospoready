@@ -1362,3 +1362,46 @@ body.inspect-open { overflow: hidden; }
 @media print {
   .readiness .results-actions, .have-it { display: none !important; }
 }
+
+/* Polish: example tag, comparison headers */
+.phone-screen { position: relative; padding-top: 50px; }
+.example-tag {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  line-height: 1.3;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid var(--line);
+  padding: 2px 7px;
+  border-radius: 999px;
+}
+.compare-table thead th { vertical-align: top; }
+.compare-plan { display: block; font-family: var(--font-head); font-weight: 700; line-height: 1.15; }
+.compare-table .compare-sub { line-height: 1.3; }
+.compare-soon { display: inline-block; margin-top: 6px; white-space: nowrap; font-size: 0.62rem; padding: 2px 7px; }
+@media (min-width: 720px) { .compare-soon { font-size: 0.72rem; padding: 3px 9px; } }
+.price .was { text-decoration-line: line-through; }
+
+/* Waitlist form: required marks and privacy note */
+.req { color: var(--red); font-weight: 700; }
+.req-note { font-size: 0.85rem; color: var(--muted); margin: 0 0 14px; }
+.form-note { font-size: 0.88rem; color: var(--muted); margin: 10px 0 0; }
+
+/* Footer contact */
+.footer-contact { margin-bottom: 14px; }
+.footer-contact a { color: #fff; font-weight: 700; }
+
+/* Docket: wider quantity for "per staff member" */
+.docket-items li { grid-template-columns: minmax(30px, auto) 1fr auto; }
+.docket .qty-long { max-width: 74px; font-size: 0.72rem; line-height: 1.25; }
+
+/* Long-form text pages (privacy) */
+.prose h2 { font-size: 1.45rem; margin-top: 1.6em; }
+.prose h2:first-child { margin-top: 0; }
+.prose ul { padding-left: 1.2em; margin: 0 0 1em; }
+.prose li { margin-bottom: 0.35em; }

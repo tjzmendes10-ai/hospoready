@@ -187,12 +187,12 @@
     event.preventDefault();
 
     if (!validate()) {
-      setStatus("Please fill in all fields with a valid email address.", "error");
+      setStatus("Please fill in the required fields (marked *) and check your email address.", "error");
       return;
     }
 
     if (form.action.indexOf("YOUR_FORM_ID") !== -1) {
-      setStatus("The waitlist isn't connected yet – please check back soon.", "error");
+      setStatus("Sorry, the waitlist isn't connected yet. Please email us at hello@example.com and we'll add you.", "error");
       return;
     }
 
@@ -208,10 +208,12 @@
         if (!response.ok) throw new Error("Request failed");
         form.reset();
         form.querySelectorAll(".field.invalid").forEach(function (el) { el.classList.remove("invalid"); });
-        setStatus("Thanks! You're on the list. We'll be in touch before launch.", "success");
+        setStatus("Thanks, you're on the list! We'll be in touch before launch.", "success");
       })
       .catch(function () {
-        setStatus("Sorry, something went wrong. Please try again in a moment.", "error");
+        setStatus(navigator.onLine === false
+          ? "You seem to be offline. Check your connection and try again."
+          : "Sorry, we couldn't add you just now. Please try again in a minute, or email us at hello@example.com.", "error");
       })
       .finally(function () {
         button.disabled = false;
