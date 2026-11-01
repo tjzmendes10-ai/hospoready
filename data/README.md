@@ -11,3 +11,5 @@
   - Each detail: `name` (optional override), `issuer`, `renewal` (`null` if not confirmed), `url` (official source), `verified`, `note`, `last_checked`.
 
 Rules: only use official government sources. Never guess fees, dates or renewal cycles – set `"verified": false` with a `note` instead.
+
+New-venue timeline: each permit has a `phase` (1–5, titles in `meta.phases`). Add a `lead_time` to a detail only when an official source confirms it; otherwise the checklist shows `meta.default_lead_time` ("Check with the issuer for current processing times.").

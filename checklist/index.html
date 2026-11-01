@@ -30,9 +30,9 @@
   <main id="main">
     <section class="page-hero">
       <div class="container narrow">
-        <p class="eyebrow">Free · All 8 states and territories</p>
+        <p class="eyebrow">Free · 2 minutes · All 8 states and territories</p>
         <h1>Your permit checklist</h1>
-        <p class="lead">Answer a few questions and we'll list the licences, permits and certificates your venue likely needs, with links to the official source for each.</p>
+        <p class="lead">Answer a few questions and we'll list the licences, permits and certificates your venue likely needs, with links to the official source for each. Then tick what you have to get your Hospo Readiness Score.</p>
       </div>
     </section>
 
@@ -57,6 +57,12 @@
               <div class="toggle-grid" id="question-toggles"></div>
             </fieldset>
 
+            <label class="switch switch-light switch-feature">
+              <input type="checkbox" role="switch" id="cl-new" name="new">
+              <span class="switch-track" aria-hidden="true"></span>
+              <span><strong>I'm opening a new venue</strong><br><span class="fine">Shows your checklist as a step-by-step timeline</span></span>
+            </label>
+
             <button type="submit" class="btn btn-full">Build my checklist</button>
             <p class="form-status" id="cl-error" role="alert"></p>
           </form>
@@ -68,6 +74,31 @@
             <p class="results-summary" id="results-summary"></p>
           </div>
           <p class="disclaimer-box"><strong>General information only, not legal advice.</strong> Requirements vary by council. Always confirm with the issuing authority.</p>
+          <section class="readiness panel" id="readiness" aria-labelledby="readiness-title">
+            <div class="readiness-top">
+              <div class="score-ring" aria-hidden="true">
+                <svg viewBox="0 0 120 120" width="120" height="120">
+                  <circle class="ring-bg" cx="60" cy="60" r="52"></circle>
+                  <circle class="ring-fg" id="ring-fg" cx="60" cy="60" r="52"></circle>
+                </svg>
+                <span class="score-num" id="score-num">0</span>
+              </div>
+              <div>
+                <h2 id="readiness-title">Hospo Readiness Score</h2>
+                <p class="score-text" id="score-text" aria-live="polite"></p>
+                <p class="fine">Tick each item below that you already have and know is current.</p>
+              </div>
+            </div>
+            <div class="gaps" id="gaps">
+              <h3>Gaps to fix</h3>
+              <ul id="gaps-list"></ul>
+            </div>
+            <div class="results-actions no-print">
+              <button type="button" class="btn btn-secondary" id="share-btn">Share my score</button>
+              <a href="../?plan=Pro#waitlist" class="btn">Fix these with HospoReady</a>
+            </div>
+            <p class="status-msg" id="share-status" role="status" aria-live="polite"></p>
+          </section>
           <div id="results-groups"></div>
           <p class="fine" id="council-help"></p>
           <div class="results-actions no-print">

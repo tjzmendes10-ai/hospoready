@@ -49,12 +49,24 @@
           <div class="stat"><span class="stat-num" id="count-alert">0</span><span class="stat-label"><span class="dot alert" aria-hidden="true"></span>Expired</span></div>
         </div>
 
+        <button type="button" class="btn btn-inspector" id="inspect-btn">🛡️ An inspector is here</button>
+
+        <div class="role-bar">
+          <label for="role-select">Viewing as</label>
+          <select id="role-select">
+            <option value="owner">Owner</option>
+            <option value="manager">Manager</option>
+            <option value="staff">Staff</option>
+          </select>
+          <p class="fine" id="role-help"></p>
+        </div>
+
         <div class="demo-toolbar">
-          <button type="button" class="btn" id="add-btn">+ Add item</button>
-          <button type="button" class="btn btn-secondary" id="scan-btn">📸 Scan a licence</button>
-          <button type="button" class="btn btn-plain" id="import-btn">Import from checklist</button>
-          <button type="button" class="btn btn-plain" id="export-btn">Export to CSV</button>
-          <button type="button" class="btn btn-plain btn-danger" id="clear-btn">Clear demo data</button>
+          <button type="button" class="btn" id="add-btn" data-perm="edit">+ Add item</button>
+          <button type="button" class="btn btn-secondary" id="scan-btn" data-perm="edit">📸 Scan a licence</button>
+          <button type="button" class="btn btn-plain" id="import-btn" data-perm="edit">Import from checklist</button>
+          <button type="button" class="btn btn-plain" id="export-btn" data-perm="export">Export to CSV</button>
+          <button type="button" class="btn btn-plain btn-danger" id="clear-btn" data-perm="delete">Clear demo data</button>
         </div>
         <p class="status-msg" id="status-msg" role="status" aria-live="polite"></p>
 
@@ -100,28 +112,70 @@
           </select>
         </div>
         <div class="field">
+          <label for="f-number">Licence / certificate number</label>
+          <input id="f-number" type="text" autocomplete="off">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="f-issuer">Issuing authority</label>
+          <input id="f-issuer" type="text" placeholder="e.g. Your council">
+        </div>
+        <div class="field">
           <label for="f-holder">Holder <span class="optional" id="f-holder-hint">(venue or person)</span></label>
           <input id="f-holder" type="text">
         </div>
       </div>
       <div class="field-row">
         <div class="field">
-          <label for="f-issuer">Issuer</label>
-          <input id="f-issuer" type="text" placeholder="e.g. Your council">
+          <label for="f-issued">Issue date</label>
+          <input id="f-issued" type="date">
         </div>
         <div class="field">
-          <label for="f-number">Licence / certificate number <span class="optional">(optional)</span></label>
-          <input id="f-number" type="text">
+          <label for="f-expiry">Expiry date <span class="optional">(blank if none)</span></label>
+          <input id="f-expiry" type="date">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="f-reminder">Renewal reminder</label>
+          <input id="f-reminder" type="date" aria-describedby="f-reminder-hint">
+          <p class="fine field-hint" id="f-reminder-hint">Defaults to 60 days before expiry.</p>
+        </div>
+        <div class="field">
+          <label for="f-fee">Fee paid ($)</label>
+          <input id="f-fee" type="number" min="0" step="0.01" inputmode="decimal">
         </div>
       </div>
       <div class="field">
-        <label for="f-expiry">Expiry date <span class="optional">(leave blank if it doesn't expire)</span></label>
-        <input id="f-expiry" type="date">
+        <label for="f-notes">Notes</label>
+        <textarea id="f-notes" rows="2"></textarea>
       </div>
       <div class="field">
-        <label for="f-notes">Notes <span class="optional">(optional)</span></label>
-        <textarea id="f-notes" rows="3"></textarea>
+        <label for="f-image">Document image</label>
+        <div class="doc-field">
+          <img id="f-image-preview" class="doc-thumb" alt="Current document image" hidden>
+          <div>
+            <input id="f-image" type="file" accept="image/*">
+            <button type="button" class="btn btn-plain btn-danger btn-xs" id="f-image-remove" hidden>Remove image</button>
+          </div>
+        </div>
       </div>
+      <fieldset class="payments-field">
+        <legend>Payment history</legend>
+        <ul class="payments-list" id="f-payments"></ul>
+        <div class="payment-add">
+          <div>
+            <label for="p-date">Date</label>
+            <input id="p-date" type="date">
+          </div>
+          <div>
+            <label for="p-amount">Amount ($)</label>
+            <input id="p-amount" type="number" min="0" step="0.01" inputmode="decimal">
+          </div>
+          <button type="button" class="btn btn-plain" id="p-add">Add payment</button>
+        </div>
+      </fieldset>
       <p class="form-status" id="item-error" role="alert"></p>
       <div class="dialog-actions">
         <button type="button" class="btn btn-plain" id="item-cancel">Cancel</button>
@@ -134,7 +188,7 @@
   <dialog id="scan-dialog" aria-labelledby="scan-dialog-title">
     <div class="dialog-inner">
       <h2 id="scan-dialog-title">Scan a licence</h2>
-      <p>Upload a clear photo or screenshot of a licence or certificate. The text is read on this device, then we suggest dates and numbers for you to check. Nothing is saved until you confirm.</p>
+      <p>Upload a clear photo or screenshot of a licence or certificate. The text is read on this device, then we suggest the expiry date, number and issuing authority for you to check. Nothing is saved until you confirm.</p>
       <label class="file-drop" for="scan-file">
         <strong>Choose a photo or image</strong><br>
         <span class="fine">JPG, PNG or WebP. Have a PDF? Take a screenshot of the page first.</span><br>
@@ -148,12 +202,16 @@
       <p class="form-status" id="scan-status" role="status" aria-live="polite"></p>
       <div class="suggestions" id="scan-suggestions" hidden>
         <div>
-          <h3 id="dates-heading">Dates found – pick the expiry date</h3>
+          <h3 id="dates-heading">Expiry date – pick one</h3>
           <div class="chips" id="date-chips" role="group" aria-labelledby="dates-heading"></div>
         </div>
         <div>
           <h3 id="numbers-heading">Possible licence / certificate numbers</h3>
           <div class="chips" id="number-chips" role="group" aria-labelledby="numbers-heading"></div>
+        </div>
+        <div>
+          <h3 id="issuers-heading">Possible issuing authority</h3>
+          <div class="chips" id="issuer-chips" role="group" aria-labelledby="issuers-heading"></div>
         </div>
         <details>
           <summary>Show all text we read</summary>
@@ -163,6 +221,29 @@
       <div class="dialog-actions">
         <button type="button" class="btn btn-plain" id="scan-cancel">Cancel</button>
         <button type="button" class="btn" id="scan-use" disabled>Review &amp; save</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Inspection mode -->
+  <div class="inspect" id="inspect" role="dialog" aria-modal="true" aria-labelledby="inspect-title" hidden>
+    <div class="inspect-bar">
+      <p class="logo"><span class="logo-mark" aria-hidden="true">✓</span> <span class="brand-name">HospoReady</span></p>
+      <button type="button" class="btn btn-plain" id="inspect-close">Close</button>
+    </div>
+    <div class="inspect-body">
+      <h2 id="inspect-title">Current licences &amp; certificates</h2>
+      <p class="inspect-meta" id="inspect-meta"></p>
+      <ul class="inspect-list" id="inspect-list"></ul>
+    </div>
+  </div>
+
+  <!-- Document image viewer -->
+  <dialog id="image-dialog" class="image-dialog" aria-label="Document image">
+    <div class="dialog-inner">
+      <img id="image-full" alt="">
+      <div class="dialog-actions">
+        <button type="button" class="btn btn-plain" id="image-close">Close</button>
       </div>
     </div>
   </dialog>

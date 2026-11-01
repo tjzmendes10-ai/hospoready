@@ -3,7 +3,7 @@
     "schema_version": 1,
     "last_updated": "2026-11-01",
     "disclaimer": "General information only, not legal advice. Requirements vary by council. Always confirm with the issuing authority.",
-    "how_to_edit": "Each permit has 'triggers' (when it applies) and either 'details' (same everywhere) or 'state_details' (per state/territory). Set 'verified' to false and add a 'note' for anything you could not confirm from an official source. Leave 'renewal' as null rather than guessing.",
+    "how_to_edit": "Each permit has 'triggers' (when it applies) and either 'details' (same everywhere) or 'state_details' (per state/territory). Set 'verified' to false and add a 'note' for anything you could not confirm from an official source. Leave 'renewal' as null rather than guessing. 'phase' (1–5) orders items in the new-venue timeline. Only add a 'lead_time' if it is confirmed by an official source.",
     "states": {
       "NSW": "New South Wales",
       "VIC": "Victoria",
@@ -36,88 +36,161 @@
       "council": "Local Council",
       "staff": "Staff Certificates",
       "other": "Other"
+    },
+    "phases": {
+      "1": {
+        "title": "Set up your business",
+        "hint": "Start here – you need an ABN before you can register for GST."
+      },
+      "2": {
+        "title": "Premises and food approvals",
+        "hint": "Talk to your council early – many approvals depend on your premises."
+      },
+      "3": {
+        "title": "Liquor",
+        "hint": "Liquor licences can take time – start well before opening."
+      },
+      "4": {
+        "title": "Staff and insurance",
+        "hint": "Sort these before your first shift."
+      },
+      "5": {
+        "title": "Before you open",
+        "hint": "Final checks before your doors open."
+      }
+    },
+    "default_lead_time": "Check with the issuer for current processing times."
+  },
+  "council_finders": {
+    "NSW": {
+      "name": "Find your local council (NSW Office of Local Government)",
+      "url": "https://www.olg.nsw.gov.au/public/find-your-local-council",
+      "last_checked": "2026-11-01"
+    },
+    "VIC": {
+      "name": "Know Your Council (Victorian Government)",
+      "url": "https://knowyourcouncil.vic.gov.au/",
+      "last_checked": "2026-11-01"
+    },
+    "QLD": {
+      "name": "Local government directory (Queensland Government)",
+      "url": "https://www.dlgwv.qld.gov.au/local-government/for-the-community/local-government-directory",
+      "last_checked": "2026-11-01"
+    },
+    "WA": {
+      "name": "MyCouncil (WA Government)",
+      "url": "https://www.mycouncil.wa.gov.au/",
+      "last_checked": "2026-11-01"
+    },
+    "SA": {
+      "name": "Find your council (Local Councils SA)",
+      "url": "https://www.localcouncils.sa.gov.au/get-involved/find-your-council",
+      "last_checked": "2026-11-01"
+    },
+    "TAS": {
+      "name": "Tasmanian council directory (Department of Justice)",
+      "url": "https://www.justice.tas.gov.au/local-government/tasmanian-council-directory",
+      "last_checked": "2026-11-01"
+    },
+    "ACT": {
+      "name": "Access Canberra (the ACT has no local councils)",
+      "url": "https://www.accesscanberra.act.gov.au/business-and-work/hospitality-liquor-and-gaming",
+      "last_checked": "2026-11-01"
+    },
+    "NT": {
+      "name": "Find your council (NT Government)",
+      "url": "https://nt.gov.au/community/local-councils-remote-communities-and-homelands/find-your-council",
+      "last_checked": "2026-11-01"
     }
   },
-
-  "council_finders": {
-    "NSW": { "name": "Find your local council (NSW Office of Local Government)", "url": "https://www.olg.nsw.gov.au/public/find-your-local-council", "last_checked": "2026-11-01" },
-    "VIC": { "name": "Know Your Council (Victorian Government)", "url": "https://knowyourcouncil.vic.gov.au/", "last_checked": "2026-11-01" },
-    "QLD": { "name": "Local government directory (Queensland Government)", "url": "https://www.dlgwv.qld.gov.au/local-government/for-the-community/local-government-directory", "last_checked": "2026-11-01" },
-    "WA": { "name": "MyCouncil (WA Government)", "url": "https://www.mycouncil.wa.gov.au/", "last_checked": "2026-11-01" },
-    "SA": { "name": "Find your council (Local Councils SA)", "url": "https://www.localcouncils.sa.gov.au/get-involved/find-your-council", "last_checked": "2026-11-01" },
-    "TAS": { "name": "Tasmanian council directory (Department of Justice)", "url": "https://www.justice.tas.gov.au/local-government/tasmanian-council-directory", "last_checked": "2026-11-01" },
-    "ACT": { "name": "Access Canberra (the ACT has no local councils)", "url": "https://www.accesscanberra.act.gov.au/business-and-work/hospitality-liquor-and-gaming", "last_checked": "2026-11-01" },
-    "NT": { "name": "Find your council (NT Government)", "url": "https://nt.gov.au/community/local-councils-remote-communities-and-homelands/find-your-council", "last_checked": "2026-11-01" }
-  },
-
   "general_links": {
-    "ablis": { "name": "ABLIS – Australian Business Licence and Information Service", "url": "https://ablis.business.gov.au/", "last_checked": "2026-11-01" }
+    "ablis": {
+      "name": "ABLIS – Australian Business Licence and Information Service",
+      "url": "https://ablis.business.gov.au/",
+      "last_checked": "2026-11-01"
+    }
   },
-
   "permits": [
     {
       "id": "abn",
       "group": "federal",
       "name": "Australian Business Number (ABN)",
       "summary": "Your business's unique identifier, used for tax, invoices and most other registrations.",
-      "triggers": { "always": true },
+      "triggers": {
+        "always": true
+      },
       "details": {
         "issuer": "Australian Business Register (ABR)",
         "renewal": "Does not expire – keep your details up to date",
         "url": "https://www.abr.gov.au/business-super-funds-charities/applying-abn",
         "verified": true,
         "last_checked": "2026-11-01"
-      }
+      },
+      "phase": 1
     },
     {
       "id": "business-name",
       "group": "federal",
       "name": "Business name registration",
       "summary": "Needed if you trade under a name that isn't your own name or your company's exact name (e.g. \"The Corner Café\").",
-      "triggers": { "always": true },
+      "triggers": {
+        "always": true
+      },
       "details": {
         "issuer": "Australian Securities and Investments Commission (ASIC)",
         "renewal": "Every 1 or 3 years (you choose when renewing)",
         "url": "https://www.asic.gov.au/for-business-and-companies/business-names/renew-a-business-name-registration",
         "verified": true,
         "last_checked": "2026-11-01"
-      }
+      },
+      "phase": 1
     },
     {
       "id": "gst",
       "group": "federal",
       "name": "GST registration",
       "summary": "Required once your GST turnover reaches $75,000. You must register within 21 days of going over the threshold.",
-      "triggers": { "always": true },
+      "triggers": {
+        "always": true
+      },
       "details": {
         "issuer": "Australian Taxation Office (ATO)",
         "renewal": "Does not expire",
         "url": "https://www.ato.gov.au/businesses-and-organisations/gst-excise-and-indirect-taxes/gst/registering-for-gst",
         "verified": true,
-        "last_checked": "2026-11-01"
-      }
+        "last_checked": "2026-11-01",
+        "lead_time": "Register within 21 days of your GST turnover reaching $75,000."
+      },
+      "phase": 1
     },
     {
       "id": "payg-withholding",
       "group": "federal",
       "name": "PAYG withholding registration",
       "summary": "Register before you pay staff so you can withhold tax from their wages and report it to the ATO.",
-      "triggers": { "any": ["employees"] },
+      "triggers": {
+        "any": [
+          "employees"
+        ]
+      },
       "details": {
         "issuer": "Australian Taxation Office (ATO)",
         "renewal": "Does not expire",
         "url": "https://www.ato.gov.au/businesses-and-organisations/starting-registering-or-closing-a-business/starting-your-own-business/registration-obligations-for-businesses/work-out-which-registrations-you-need/examples-of-business-registrations",
         "verified": true,
-        "last_checked": "2026-11-01"
-      }
+        "last_checked": "2026-11-01",
+        "lead_time": "Register before you start paying staff."
+      },
+      "phase": 1
     },
-
     {
       "id": "food-business-registration",
       "group": "state",
       "name": "Food business registration",
       "summary": "Lets the food regulator know you sell food so they can inspect you. Depending on where you are, it's a one-off notification or a licence you renew.",
-      "triggers": { "always": true },
+      "triggers": {
+        "always": true
+      },
       "state_details": {
         "NSW": {
           "name": "Food business notification",
@@ -135,7 +208,8 @@
           "renewal": "Class 1–3: every year (many councils use a 31 December expiry). Class 4: one-off notification.",
           "url": "https://www2.health.vic.gov.au/public-health/food-safety/food-businesses/starting-a-food-business",
           "verified": true,
-          "last_checked": "2026-11-01"
+          "last_checked": "2026-11-01",
+          "lead_time": "Must be registered (or notified) with council before you start trading."
         },
         "QLD": {
           "name": "Food business licence",
@@ -162,7 +236,8 @@
           "renewal": "One-off notification (no fee) – notify before any changes take effect",
           "url": "https://www.sa.gov.au/topics/business-and-trade/licensing/food-business-notification",
           "verified": true,
-          "last_checked": "2026-11-01"
+          "last_checked": "2026-11-01",
+          "lead_time": "Notify your council before you start handling food."
         },
         "TAS": {
           "name": "Food business registration (P1–P3) or notification (P3-N, P4)",
@@ -171,7 +246,8 @@
           "renewal": "Registered businesses: every year (registration lasts up to 12 months)",
           "url": "https://www.health.tas.gov.au/publications/tasmania-food-business-risk-classification-system-fact-sheet",
           "verified": true,
-          "last_checked": "2026-11-01"
+          "last_checked": "2026-11-01",
+          "lead_time": "Must hold a certificate of registration before you start trading."
         },
         "ACT": {
           "name": "Food business registration",
@@ -179,7 +255,8 @@
           "renewal": "Every 1, 2 or 3 years (you choose)",
           "url": "https://www.accesscanberra.act.gov.au/business-and-work/hospitality-liquor-and-gaming/register-a-food-business",
           "verified": true,
-          "last_checked": "2026-11-01"
+          "last_checked": "2026-11-01",
+          "lead_time": "Must be registered before you open."
         },
         "NT": {
           "name": "Food business registration",
@@ -187,17 +264,22 @@
           "renewal": "Priority 1 and 2 businesses: every year. Priority 3: every 3 years. Renew at least 30 days before expiry.",
           "url": "https://nt.gov.au/industry/hospitality/accommodation-and-food-businesses/register-food-business",
           "verified": true,
-          "last_checked": "2026-11-01"
+          "last_checked": "2026-11-01",
+          "lead_time": "Must be registered before you start operating."
         }
-      }
+      },
+      "phase": 2
     },
-
     {
       "id": "liquor-licence",
       "group": "state",
       "name": "Liquor licence",
       "summary": "Permission to sell or supply alcohol on your premises. Most states now charge an annual licence fee rather than requiring a full renewal.",
-      "triggers": { "any": ["alcohol"] },
+      "triggers": {
+        "any": [
+          "alcohol"
+        ]
+      },
       "state_details": {
         "NSW": {
           "issuer": "Liquor & Gaming NSW",
@@ -255,70 +337,248 @@
           "verified": true,
           "last_checked": "2026-11-01"
         }
-      }
+      },
+      "phase": 3
     },
-
     {
       "id": "workers-compensation",
       "group": "state",
       "name": "Workers compensation insurance",
       "summary": "Compulsory insurance that covers staff if they're injured at work. Each state and territory runs its own scheme.",
-      "triggers": { "any": ["employees"] },
+      "triggers": {
+        "any": [
+          "employees"
+        ]
+      },
       "state_details": {
-        "NSW": { "issuer": "icare NSW (regulated by SIRA)", "renewal": null, "url": "https://www.safeworkaustralia.gov.au/law-and-regulation/whs-regulators-and-workers-compensation-authorities-contact-information", "verified": false, "note": "Insurer confirmed; policy renewal cycle not confirmed from an official source.", "last_checked": "2026-11-01" },
-        "VIC": { "issuer": "WorkSafe Victoria", "renewal": null, "url": "https://www.safeworkaustralia.gov.au/law-and-regulation/whs-regulators-and-workers-compensation-authorities-contact-information", "verified": false, "note": "Insurer confirmed; policy renewal cycle not confirmed from an official source.", "last_checked": "2026-11-01" },
-        "QLD": { "issuer": "WorkCover Queensland", "renewal": "Every year – WorkCover contacts you each July. Take out a policy within 5 business days of employing someone.", "url": "https://ablis.business.gov.au/service/qld/workers-compensation-insurance/4104", "verified": true, "last_checked": "2026-11-01" },
-        "WA": { "issuer": "Approved insurers (scheme regulated by WorkCover WA)", "renewal": null, "url": "https://www.safeworkaustralia.gov.au/law-and-regulation/whs-regulators-and-workers-compensation-authorities-contact-information", "verified": false, "note": "Regulator confirmed; policy renewal cycle not confirmed from an official source.", "last_checked": "2026-11-01" },
-        "SA": { "issuer": "ReturnToWorkSA", "renewal": null, "url": "https://www.safeworkaustralia.gov.au/law-and-regulation/whs-regulators-and-workers-compensation-authorities-contact-information", "verified": false, "note": "Scheme confirmed; registration/renewal details not confirmed from an official source.", "last_checked": "2026-11-01" },
-        "TAS": { "issuer": "Licensed insurers (scheme regulated by WorkSafe Tasmania)", "renewal": null, "url": "https://www.safeworkaustralia.gov.au/law-and-regulation/whs-regulators-and-workers-compensation-authorities-contact-information", "verified": false, "note": "Regulator confirmed; policy renewal cycle not confirmed from an official source.", "last_checked": "2026-11-01" },
-        "ACT": { "issuer": "Approved insurers (scheme regulated by WorkSafe ACT)", "renewal": null, "url": "https://www.safeworkaustralia.gov.au/law-and-regulation/whs-regulators-and-workers-compensation-authorities-contact-information", "verified": false, "note": "Regulator confirmed; policy renewal cycle not confirmed from an official source.", "last_checked": "2026-11-01" },
-        "NT": { "issuer": "Approved insurers (scheme regulated by NT WorkSafe)", "renewal": null, "url": "https://www.safeworkaustralia.gov.au/law-and-regulation/whs-regulators-and-workers-compensation-authorities-contact-information", "verified": false, "note": "Regulator confirmed; policy renewal cycle not confirmed from an official source.", "last_checked": "2026-11-01" }
-      }
+        "NSW": {
+          "issuer": "icare NSW (regulated by SIRA)",
+          "renewal": null,
+          "url": "https://www.safeworkaustralia.gov.au/law-and-regulation/whs-regulators-and-workers-compensation-authorities-contact-information",
+          "verified": false,
+          "note": "Insurer confirmed; policy renewal cycle not confirmed from an official source.",
+          "last_checked": "2026-11-01"
+        },
+        "VIC": {
+          "issuer": "WorkSafe Victoria",
+          "renewal": null,
+          "url": "https://www.safeworkaustralia.gov.au/law-and-regulation/whs-regulators-and-workers-compensation-authorities-contact-information",
+          "verified": false,
+          "note": "Insurer confirmed; policy renewal cycle not confirmed from an official source.",
+          "last_checked": "2026-11-01"
+        },
+        "QLD": {
+          "issuer": "WorkCover Queensland",
+          "renewal": "Every year – WorkCover contacts you each July. Take out a policy within 5 business days of employing someone.",
+          "url": "https://ablis.business.gov.au/service/qld/workers-compensation-insurance/4104",
+          "verified": true,
+          "last_checked": "2026-11-01",
+          "lead_time": "Take out a policy within 5 business days of employing someone."
+        },
+        "WA": {
+          "issuer": "Approved insurers (scheme regulated by WorkCover WA)",
+          "renewal": null,
+          "url": "https://www.safeworkaustralia.gov.au/law-and-regulation/whs-regulators-and-workers-compensation-authorities-contact-information",
+          "verified": false,
+          "note": "Regulator confirmed; policy renewal cycle not confirmed from an official source.",
+          "last_checked": "2026-11-01"
+        },
+        "SA": {
+          "issuer": "ReturnToWorkSA",
+          "renewal": null,
+          "url": "https://www.safeworkaustralia.gov.au/law-and-regulation/whs-regulators-and-workers-compensation-authorities-contact-information",
+          "verified": false,
+          "note": "Scheme confirmed; registration/renewal details not confirmed from an official source.",
+          "last_checked": "2026-11-01"
+        },
+        "TAS": {
+          "issuer": "Licensed insurers (scheme regulated by WorkSafe Tasmania)",
+          "renewal": null,
+          "url": "https://www.safeworkaustralia.gov.au/law-and-regulation/whs-regulators-and-workers-compensation-authorities-contact-information",
+          "verified": false,
+          "note": "Regulator confirmed; policy renewal cycle not confirmed from an official source.",
+          "last_checked": "2026-11-01"
+        },
+        "ACT": {
+          "issuer": "Approved insurers (scheme regulated by WorkSafe ACT)",
+          "renewal": null,
+          "url": "https://www.safeworkaustralia.gov.au/law-and-regulation/whs-regulators-and-workers-compensation-authorities-contact-information",
+          "verified": false,
+          "note": "Regulator confirmed; policy renewal cycle not confirmed from an official source.",
+          "last_checked": "2026-11-01"
+        },
+        "NT": {
+          "issuer": "Approved insurers (scheme regulated by NT WorkSafe)",
+          "renewal": null,
+          "url": "https://www.safeworkaustralia.gov.au/law-and-regulation/whs-regulators-and-workers-compensation-authorities-contact-information",
+          "verified": false,
+          "note": "Regulator confirmed; policy renewal cycle not confirmed from an official source.",
+          "last_checked": "2026-11-01"
+        }
+      },
+      "phase": 4
     },
-
     {
       "id": "mobile-food-vending",
       "group": "state",
       "name": "Mobile food business registration",
       "summary": "Food trucks and vans usually register in one 'home' area, then need permission to trade in each place they park.",
-      "triggers": { "venue_types": ["food_truck"] },
+      "triggers": {
+        "venue_types": [
+          "food_truck"
+        ]
+      },
       "state_details": {
-        "NSW": { "issuer": "Local council of the area you trade in", "renewal": null, "url": "https://www.foodauthority.nsw.gov.au/retail/mobile-food-vendors", "verified": false, "note": "Councils regulate mobile vendors; renewal cycle and trading permits vary by council.", "last_checked": "2026-11-01" },
-        "VIC": { "name": "FoodTrader registration + statements of trade", "issuer": "Your principal council, via the FoodTrader portal (Department of Health)", "renewal": "Class 2 and 3: register every year. Lodge a free statement of trade before each place/time you trade.", "url": "https://health.vic.gov.au/food-safety/streatrader", "verified": true, "last_checked": "2026-11-01" },
-        "QLD": { "issuer": "Local council where the vehicle is based", "renewal": null, "url": "https://www.business.qld.gov.au/starting-business/starting-buying/setting-up/licences-registrations", "verified": false, "note": "Not confirmed from an official source – check with your council.", "last_checked": "2026-11-01" },
-        "WA": { "issuer": "Local government", "renewal": null, "url": "https://www.health.wa.gov.au/Articles/S_T/Starting-a-food-business-in-WA", "verified": false, "note": "Not confirmed from an official source – check with your local government.", "last_checked": "2026-11-01" },
-        "SA": { "issuer": "Council where the vehicle is normally garaged (one-off notification)", "renewal": "One-off notification; your FBN number is recognised across SA", "url": "https://www.sahealth.sa.gov.au/wps/wcm/connect/public+content/sa+health+internet/public+health/food+safety+for+businesses/starting+a+food+business", "verified": true, "note": "Councils may also require permits to trade on public land.", "last_checked": "2026-11-01" },
-        "TAS": { "issuer": "Your home council (statewide mobile registration)", "renewal": null, "url": "https://www.health.tas.gov.au/publications/guidelines-mobile-food-businesses", "verified": false, "note": "Statewide registration through home council confirmed; renewal cycle not confirmed.", "last_checked": "2026-11-01" },
-        "ACT": { "issuer": "ACT Health Protection Service / Access Canberra", "renewal": null, "url": "https://www.accesscanberra.act.gov.au/business-and-work/hospitality-liquor-and-gaming/busking-and-trading-in-public-places", "verified": false, "note": "Not confirmed from an official source – check with Access Canberra.", "last_checked": "2026-11-01" },
-        "NT": { "issuer": "NT Health, plus council permits to trade", "renewal": null, "url": "https://nt.gov.au/_media/docs/business-and-industry/liquor-and-hospitality/food-safety-and-regulations/mobile-and-temporary-food-premises-guidelines.pdf", "verified": false, "note": "Not confirmed from an official source – check with NT Health and your council.", "last_checked": "2026-11-01" }
-      }
+        "NSW": {
+          "issuer": "Local council of the area you trade in",
+          "renewal": null,
+          "url": "https://www.foodauthority.nsw.gov.au/retail/mobile-food-vendors",
+          "verified": false,
+          "note": "Councils regulate mobile vendors; renewal cycle and trading permits vary by council.",
+          "last_checked": "2026-11-01"
+        },
+        "VIC": {
+          "name": "FoodTrader registration + statements of trade",
+          "issuer": "Your principal council, via the FoodTrader portal (Department of Health)",
+          "renewal": "Class 2 and 3: register every year. Lodge a free statement of trade before each place/time you trade.",
+          "url": "https://health.vic.gov.au/food-safety/streatrader",
+          "verified": true,
+          "last_checked": "2026-11-01",
+          "lead_time": "Councils advise allowing at least 14 days to register; lodge a statement of trade before each trading location."
+        },
+        "QLD": {
+          "issuer": "Local council where the vehicle is based",
+          "renewal": null,
+          "url": "https://www.business.qld.gov.au/starting-business/starting-buying/setting-up/licences-registrations",
+          "verified": false,
+          "note": "Not confirmed from an official source – check with your council.",
+          "last_checked": "2026-11-01"
+        },
+        "WA": {
+          "issuer": "Local government",
+          "renewal": null,
+          "url": "https://www.health.wa.gov.au/Articles/S_T/Starting-a-food-business-in-WA",
+          "verified": false,
+          "note": "Not confirmed from an official source – check with your local government.",
+          "last_checked": "2026-11-01"
+        },
+        "SA": {
+          "issuer": "Council where the vehicle is normally garaged (one-off notification)",
+          "renewal": "One-off notification; your FBN number is recognised across SA",
+          "url": "https://www.sahealth.sa.gov.au/wps/wcm/connect/public+content/sa+health+internet/public+health/food+safety+for+businesses/starting+a+food+business",
+          "verified": true,
+          "note": "Councils may also require permits to trade on public land.",
+          "last_checked": "2026-11-01"
+        },
+        "TAS": {
+          "issuer": "Your home council (statewide mobile registration)",
+          "renewal": null,
+          "url": "https://www.health.tas.gov.au/publications/guidelines-mobile-food-businesses",
+          "verified": false,
+          "note": "Statewide registration through home council confirmed; renewal cycle not confirmed.",
+          "last_checked": "2026-11-01"
+        },
+        "ACT": {
+          "issuer": "ACT Health Protection Service / Access Canberra",
+          "renewal": null,
+          "url": "https://www.accesscanberra.act.gov.au/business-and-work/hospitality-liquor-and-gaming/busking-and-trading-in-public-places",
+          "verified": false,
+          "note": "Not confirmed from an official source – check with Access Canberra.",
+          "last_checked": "2026-11-01"
+        },
+        "NT": {
+          "issuer": "NT Health, plus council permits to trade",
+          "renewal": null,
+          "url": "https://nt.gov.au/_media/docs/business-and-industry/liquor-and-hospitality/food-safety-and-regulations/mobile-and-temporary-food-premises-guidelines.pdf",
+          "verified": false,
+          "note": "Not confirmed from an official source – check with NT Health and your council.",
+          "last_checked": "2026-11-01"
+        }
+      },
+      "phase": 2
     },
-
     {
       "id": "outdoor-dining",
       "group": "council",
       "name": "Outdoor dining / footpath permit",
       "summary": "Permission to put tables and chairs on the footpath or other public land outside your venue.",
-      "triggers": { "any": ["outdoor"] },
+      "triggers": {
+        "any": [
+          "outdoor"
+        ]
+      },
       "varies_by_council": true,
       "state_details": {
-        "NSW": { "issuer": "Your local council", "renewal": null, "verified": false, "note": "Varies by council – check your council's outdoor dining policy.", "last_checked": "2026-11-01" },
-        "VIC": { "issuer": "Your local council", "renewal": null, "verified": false, "note": "Varies by council – check your council's footpath trading permit.", "last_checked": "2026-11-01" },
-        "QLD": { "issuer": "Your local council", "renewal": null, "verified": false, "note": "Varies by council.", "last_checked": "2026-11-01" },
-        "WA": { "issuer": "Your local government", "renewal": null, "verified": false, "note": "Varies by local government.", "last_checked": "2026-11-01" },
-        "SA": { "issuer": "Your local council", "renewal": null, "verified": false, "note": "Varies by council.", "last_checked": "2026-11-01" },
-        "TAS": { "issuer": "Your local council", "renewal": null, "verified": false, "note": "Varies by council.", "last_checked": "2026-11-01" },
-        "ACT": { "name": "Outdoor dining permit (public unleased land permit)", "issuer": "Access Canberra", "renewal": "Every 1, 2 or 3 years", "url": "https://www.accesscanberra.act.gov.au/business-and-work/hospitality-liquor-and-gaming/outdoor-dining-permits", "verified": true, "note": "If serving alcohol outdoors, sort your liquor licence first.", "last_checked": "2026-11-01" },
-        "NT": { "issuer": "Your local council", "renewal": null, "verified": false, "note": "Varies by council.", "last_checked": "2026-11-01" }
-      }
+        "NSW": {
+          "issuer": "Your local council",
+          "renewal": null,
+          "verified": false,
+          "note": "Varies by council – check your council's outdoor dining policy.",
+          "last_checked": "2026-11-01"
+        },
+        "VIC": {
+          "issuer": "Your local council",
+          "renewal": null,
+          "verified": false,
+          "note": "Varies by council – check your council's footpath trading permit.",
+          "last_checked": "2026-11-01"
+        },
+        "QLD": {
+          "issuer": "Your local council",
+          "renewal": null,
+          "verified": false,
+          "note": "Varies by council.",
+          "last_checked": "2026-11-01"
+        },
+        "WA": {
+          "issuer": "Your local government",
+          "renewal": null,
+          "verified": false,
+          "note": "Varies by local government.",
+          "last_checked": "2026-11-01"
+        },
+        "SA": {
+          "issuer": "Your local council",
+          "renewal": null,
+          "verified": false,
+          "note": "Varies by council.",
+          "last_checked": "2026-11-01"
+        },
+        "TAS": {
+          "issuer": "Your local council",
+          "renewal": null,
+          "verified": false,
+          "note": "Varies by council.",
+          "last_checked": "2026-11-01"
+        },
+        "ACT": {
+          "name": "Outdoor dining permit (public unleased land permit)",
+          "issuer": "Access Canberra",
+          "renewal": "Every 1, 2 or 3 years",
+          "url": "https://www.accesscanberra.act.gov.au/business-and-work/hospitality-liquor-and-gaming/outdoor-dining-permits",
+          "verified": true,
+          "note": "If serving alcohol outdoors, sort your liquor licence first.",
+          "last_checked": "2026-11-01",
+          "lead_time": "Access Canberra says applications typically take up to 10 business days. If serving alcohol outdoors, get your liquor licence first."
+        },
+        "NT": {
+          "issuer": "Your local council",
+          "renewal": null,
+          "verified": false,
+          "note": "Varies by council.",
+          "last_checked": "2026-11-01"
+        }
+      },
+      "phase": 2
     },
-
     {
       "id": "signage",
       "group": "council",
       "name": "Signage approval",
       "summary": "Some signs – A-frames on the footpath, awnings, illuminated or large shopfront signs – need council approval. Applies if you have signs.",
-      "triggers": { "always": true },
+      "triggers": {
+        "always": true
+      },
       "varies_by_council": true,
       "details": {
         "issuer": "Your local council (Access Canberra in the ACT)",
@@ -326,15 +586,19 @@
         "verified": false,
         "note": "Rules and any renewal requirements vary by council. Not confirmed from an official source.",
         "last_checked": "2026-11-01"
-      }
+      },
+      "phase": 2
     },
-
     {
       "id": "live-entertainment",
       "group": "council",
       "name": "Live entertainment approvals",
       "summary": "Live music or performances can be limited by your planning/development approval and your liquor licence conditions (e.g. hours, noise).",
-      "triggers": { "any": ["live_entertainment"] },
+      "triggers": {
+        "any": [
+          "live_entertainment"
+        ]
+      },
       "varies_by_council": true,
       "details": {
         "issuer": "Your local council (planning) and your state liquor regulator (licence conditions)",
@@ -342,32 +606,90 @@
         "verified": false,
         "note": "Varies by council and licence. Not confirmed from an official source – check your development consent and licence conditions.",
         "last_checked": "2026-11-01"
-      }
+      },
+      "phase": 2
     },
-
     {
       "id": "food-safety-supervisor",
       "group": "staff",
       "name": "Food Safety Supervisor (FSS) certificate",
       "summary": "Most venues that prepare and serve unpackaged, ready-to-eat food must appoint a trained Food Safety Supervisor (national Standard 3.2.2A).",
-      "triggers": { "always": true },
+      "triggers": {
+        "always": true
+      },
       "state_details": {
-        "NSW": { "name": "NSW Food Safety Supervisor certificate", "issuer": "NSW Food Authority (training by approved RTOs)", "renewal": "Every 5 years – certificates expire 5 years from issue", "url": "https://www.foodauthority.nsw.gov.au/retail/fss-food-safety-supervisors", "verified": true, "last_checked": "2026-11-01" },
-        "VIC": { "issuer": "Registered training organisation (RTO); class 1 and 2 premises must have one", "renewal": "Training must have been completed within the last 5 years (Standard 3.2.2A)", "url": "https://www.health.vic.gov.au/sites/default/files/2022-05/guide-for-food-businesses-food-safety-supervisors-and-training.pdf", "verified": true, "last_checked": "2026-11-01" },
-        "QLD": { "issuer": "Registered training organisation (RTO); notify your council within 30 days of your licence being issued", "renewal": "At least every 5 years", "url": "https://www.health.qld.gov.au/__data/assets/pdf_file/0027/813618/food-safety-supervisors.pdf", "verified": true, "last_checked": "2026-11-01" },
-        "WA": { "issuer": "Registered training organisation (RTO)", "renewal": "Training must have been completed within the last 5 years (Standard 3.2.2A)", "url": "https://www.health.wa.gov.au/Articles/S_T/Starting-a-food-business-in-WA", "verified": true, "last_checked": "2026-11-01" },
-        "SA": { "issuer": "Registered training organisation (RTO)", "renewal": "Training must have been completed within the last 5 years (Standard 3.2.2A)", "url": "https://www.sahealth.sa.gov.au/wps/wcm/connect/public+content/sa+health+internet/public+health/food+safety+for+businesses/food+safety+management/food+safety+management+tools", "verified": true, "last_checked": "2026-11-01" },
-        "TAS": { "issuer": "Registered training organisation (RTO)", "renewal": null, "url": "https://www.foodstandards.gov.au/business/food-safety/standard-322a-food-safety-management-tools", "verified": false, "note": "Standard 3.2.2A applies nationally; Tasmania-specific process not confirmed.", "last_checked": "2026-11-01" },
-        "ACT": { "issuer": "Registered training organisation (RTO); notify ACT Health within 30 days of registration", "renewal": "Training more than 5 years old is out of date", "url": "https://www.health.act.gov.au/businesses/food-safety-regulation/starting-food-business", "verified": true, "last_checked": "2026-11-01" },
-        "NT": { "issuer": "Registered training organisation (RTO)", "renewal": null, "url": "https://www.foodstandards.gov.au/business/food-safety/standard-322a-food-safety-management-tools", "verified": false, "note": "Standard 3.2.2A applies nationally; NT-specific process not confirmed.", "last_checked": "2026-11-01" }
-      }
+        "NSW": {
+          "name": "NSW Food Safety Supervisor certificate",
+          "issuer": "NSW Food Authority (training by approved RTOs)",
+          "renewal": "Every 5 years – certificates expire 5 years from issue",
+          "url": "https://www.foodauthority.nsw.gov.au/retail/fss-food-safety-supervisors",
+          "verified": true,
+          "last_checked": "2026-11-01"
+        },
+        "VIC": {
+          "issuer": "Registered training organisation (RTO); class 1 and 2 premises must have one",
+          "renewal": "Training must have been completed within the last 5 years (Standard 3.2.2A)",
+          "url": "https://www.health.vic.gov.au/sites/default/files/2022-05/guide-for-food-businesses-food-safety-supervisors-and-training.pdf",
+          "verified": true,
+          "last_checked": "2026-11-01"
+        },
+        "QLD": {
+          "issuer": "Registered training organisation (RTO); notify your council within 30 days of your licence being issued",
+          "renewal": "At least every 5 years",
+          "url": "https://www.health.qld.gov.au/__data/assets/pdf_file/0027/813618/food-safety-supervisors.pdf",
+          "verified": true,
+          "last_checked": "2026-11-01",
+          "lead_time": "Appoint an FSS and notify council within 30 days of your licence being issued."
+        },
+        "WA": {
+          "issuer": "Registered training organisation (RTO)",
+          "renewal": "Training must have been completed within the last 5 years (Standard 3.2.2A)",
+          "url": "https://www.health.wa.gov.au/Articles/S_T/Starting-a-food-business-in-WA",
+          "verified": true,
+          "last_checked": "2026-11-01"
+        },
+        "SA": {
+          "issuer": "Registered training organisation (RTO)",
+          "renewal": "Training must have been completed within the last 5 years (Standard 3.2.2A)",
+          "url": "https://www.sahealth.sa.gov.au/wps/wcm/connect/public+content/sa+health+internet/public+health/food+safety+for+businesses/food+safety+management/food+safety+management+tools",
+          "verified": true,
+          "last_checked": "2026-11-01"
+        },
+        "TAS": {
+          "issuer": "Registered training organisation (RTO)",
+          "renewal": null,
+          "url": "https://www.foodstandards.gov.au/business/food-safety/standard-322a-food-safety-management-tools",
+          "verified": false,
+          "note": "Standard 3.2.2A applies nationally; Tasmania-specific process not confirmed.",
+          "last_checked": "2026-11-01"
+        },
+        "ACT": {
+          "issuer": "Registered training organisation (RTO); notify ACT Health within 30 days of registration",
+          "renewal": "Training more than 5 years old is out of date",
+          "url": "https://www.health.act.gov.au/businesses/food-safety-regulation/starting-food-business",
+          "verified": true,
+          "last_checked": "2026-11-01",
+          "lead_time": "Notify ACT Health of your FSS within 30 days of registration."
+        },
+        "NT": {
+          "issuer": "Registered training organisation (RTO)",
+          "renewal": null,
+          "url": "https://www.foodstandards.gov.au/business/food-safety/standard-322a-food-safety-management-tools",
+          "verified": false,
+          "note": "Standard 3.2.2A applies nationally; NT-specific process not confirmed.",
+          "last_checked": "2026-11-01"
+        }
+      },
+      "phase": 4
     },
     {
       "id": "food-handler-training",
       "group": "staff",
       "name": "Food handler training",
       "summary": "Staff who handle unpackaged, potentially hazardous food must be trained in food safety before they start (national Standard 3.2.2A). Keep a record of who's done it.",
-      "triggers": { "always": true },
+      "triggers": {
+        "always": true
+      },
       "details": {
         "issuer": "Your business (free or paid courses are available; no formal certificate required)",
         "renewal": null,
@@ -375,70 +697,197 @@
         "verified": true,
         "note": "No renewal period found in official sources.",
         "last_checked": "2026-11-01"
-      }
+      },
+      "phase": 4
     },
     {
       "id": "rsa",
       "group": "staff",
       "name": "Responsible Service of Alcohol (RSA)",
       "summary": "Everyone who sells or serves alcohol needs RSA training. Some states require it to be refreshed.",
-      "triggers": { "any": ["alcohol"] },
+      "triggers": {
+        "any": [
+          "alcohol"
+        ]
+      },
       "state_details": {
-        "NSW": { "name": "RSA competency card", "issuer": "Liquor & Gaming NSW (card via Service NSW)", "renewal": "Every 5 years – renew with the online refresher", "url": "https://www.nsw.gov.au/business-and-economy/liquor-and-gaming/training/competency-cards", "verified": true, "last_checked": "2026-11-01" },
-        "VIC": { "issuer": "Liquor Control Victoria (approved providers)", "renewal": "Free refresher every 3 years", "url": "https://www.vic.gov.au/rsa-training", "verified": true, "last_checked": "2026-11-01" },
-        "QLD": { "issuer": "Registered training organisation; OLGR rules", "renewal": "Does not expire (certificates from before 2002 aren't valid). Staff must complete RSA within 30 days of starting.", "url": "https://www.business.qld.gov.au/industries/hospitality-tourism-sport/liquor-gaming/liquor/training/rsa/certification", "verified": true, "last_checked": "2026-11-01" },
-        "WA": { "issuer": "Registered training organisation; Racing, Gaming and Liquor rules", "renewal": "Does not currently expire. Staff must be trained within 28 days of starting.", "url": "https://www.dlgsc.wa.gov.au/racing-gaming-and-liquor/liquor/training", "verified": true, "note": "Official page says courses 'currently' have no expiry – recheck periodically.", "last_checked": "2026-11-01" },
-        "SA": { "issuer": "Commissioner-approved RSA providers (Consumer and Business Services)", "renewal": "No set refresher period for RSA", "url": "https://www.cbs.sa.gov.au/sections/LGL/RSA-approved-providers", "verified": true, "note": "Separate venue risk-management training must be repeated at least every 2 years.", "last_checked": "2026-11-01" },
-        "TAS": { "issuer": "Approved RSA course providers (Liquor and Gaming Branch)", "renewal": null, "url": "https://www.treasury.tas.gov.au/liquor-and-gaming/liquor", "verified": false, "note": "No refresher requirement found, but not confirmed. New staff have up to 3 months while enrolled.", "last_checked": "2026-11-01" },
-        "ACT": { "issuer": "Access Canberra approved providers", "renewal": "Every 3 years (ACT-approved refresher)", "url": "https://www.accesscanberra.act.gov.au/business-and-work/hospitality-liquor-and-gaming/liquor-licences", "verified": true, "last_checked": "2026-11-01" },
-        "NT": { "issuer": "Licensing NT (free NTrefreshRSA course)", "renewal": null, "url": "https://nt.gov.au/industry/liquor/sell-serve-responsibly/responsible-service-of-alcohol", "verified": false, "note": "Official sources conflict: the Liquor Act/Licensing NT say a refresher every 3 years, the current NT Government page says 5 years.", "last_checked": "2026-11-01" }
-      }
+        "NSW": {
+          "name": "RSA competency card",
+          "issuer": "Liquor & Gaming NSW (card via Service NSW)",
+          "renewal": "Every 5 years – renew with the online refresher",
+          "url": "https://www.nsw.gov.au/business-and-economy/liquor-and-gaming/training/competency-cards",
+          "verified": true,
+          "last_checked": "2026-11-01"
+        },
+        "VIC": {
+          "issuer": "Liquor Control Victoria (approved providers)",
+          "renewal": "Free refresher every 3 years",
+          "url": "https://www.vic.gov.au/rsa-training",
+          "verified": true,
+          "last_checked": "2026-11-01"
+        },
+        "QLD": {
+          "issuer": "Registered training organisation; OLGR rules",
+          "renewal": "Does not expire (certificates from before 2002 aren't valid). Staff must complete RSA within 30 days of starting.",
+          "url": "https://www.business.qld.gov.au/industries/hospitality-tourism-sport/liquor-gaming/liquor/training/rsa/certification",
+          "verified": true,
+          "last_checked": "2026-11-01",
+          "lead_time": "Staff must complete RSA within 30 days of starting."
+        },
+        "WA": {
+          "issuer": "Registered training organisation; Racing, Gaming and Liquor rules",
+          "renewal": "Does not currently expire. Staff must be trained within 28 days of starting.",
+          "url": "https://www.dlgsc.wa.gov.au/racing-gaming-and-liquor/liquor/training",
+          "verified": true,
+          "note": "Official page says courses 'currently' have no expiry – recheck periodically.",
+          "last_checked": "2026-11-01",
+          "lead_time": "Staff must be trained within 28 days of starting."
+        },
+        "SA": {
+          "issuer": "Commissioner-approved RSA providers (Consumer and Business Services)",
+          "renewal": "No set refresher period for RSA",
+          "url": "https://www.cbs.sa.gov.au/sections/LGL/RSA-approved-providers",
+          "verified": true,
+          "note": "Separate venue risk-management training must be repeated at least every 2 years.",
+          "last_checked": "2026-11-01"
+        },
+        "TAS": {
+          "issuer": "Approved RSA course providers (Liquor and Gaming Branch)",
+          "renewal": null,
+          "url": "https://www.treasury.tas.gov.au/liquor-and-gaming/liquor",
+          "verified": false,
+          "note": "No refresher requirement found, but not confirmed. New staff have up to 3 months while enrolled.",
+          "last_checked": "2026-11-01",
+          "lead_time": "New staff can work for up to 3 months while enrolled in an approved course."
+        },
+        "ACT": {
+          "issuer": "Access Canberra approved providers",
+          "renewal": "Every 3 years (ACT-approved refresher)",
+          "url": "https://www.accesscanberra.act.gov.au/business-and-work/hospitality-liquor-and-gaming/liquor-licences",
+          "verified": true,
+          "last_checked": "2026-11-01"
+        },
+        "NT": {
+          "issuer": "Licensing NT (free NTrefreshRSA course)",
+          "renewal": null,
+          "url": "https://nt.gov.au/industry/liquor/sell-serve-responsibly/responsible-service-of-alcohol",
+          "verified": false,
+          "note": "Official sources conflict: the Liquor Act/Licensing NT say a refresher every 3 years, the current NT Government page says 5 years.",
+          "last_checked": "2026-11-01"
+        }
+      },
+      "phase": 4
     },
-
     {
       "id": "music-licence",
       "group": "other",
       "name": "Music licence",
       "summary": "Playing recorded music (including radio or streaming) or hosting live music in a business needs a licence. One OneMusic licence covers both songs and recordings.",
-      "triggers": { "any": ["music", "live_entertainment"] },
+      "triggers": {
+        "any": [
+          "music",
+          "live_entertainment"
+        ]
+      },
       "details": {
         "issuer": "OneMusic Australia (APRA AMCOS and PPCA)",
         "renewal": "Most licences are annual and renew automatically",
         "url": "https://business.gov.au/legal/playing-music-in-your-business",
         "verified": true,
         "last_checked": "2026-11-01"
-      }
+      },
+      "phase": 5
     },
     {
       "id": "takeaway",
       "group": "other",
       "name": "Takeaway sales",
       "summary": "No separate takeaway licence was found. Make sure your food business registration/notification describes takeaway sales.",
-      "triggers": { "any": ["takeaway"] },
+      "triggers": {
+        "any": [
+          "takeaway"
+        ]
+      },
       "details": {
         "issuer": "Your food regulator (usually your local council)",
         "renewal": null,
         "verified": false,
         "note": "Not confirmed from an official source – check with your council.",
         "last_checked": "2026-11-01"
-      }
+      },
+      "phase": 5
     },
     {
       "id": "catering",
       "group": "other",
       "name": "Catering",
       "summary": "Catering can change how your food business is classified (and what records you keep), so tell your food regulator if you cater.",
-      "triggers": { "any": ["catering"] },
+      "triggers": {
+        "any": [
+          "catering"
+        ]
+      },
       "state_details": {
-        "NSW": { "name": "Catering (and vulnerable persons licence if applicable)", "issuer": "Local council; NSW Food Authority if you wholesale or serve 6+ vulnerable people (e.g. aged care)", "renewal": null, "url": "https://www.foodauthority.nsw.gov.au/retail/caterers", "verified": false, "note": "Requirements depend on who you cater for; renewal not confirmed.", "last_checked": "2026-11-01" },
-        "VIC": { "issuer": "Your registering council (confirms your food premises class)", "renewal": null, "verified": false, "note": "Catering may affect your class – not confirmed from an official source.", "last_checked": "2026-11-01" },
-        "QLD": { "issuer": "Your local council", "renewal": null, "verified": false, "note": "Not confirmed from an official source.", "last_checked": "2026-11-01" },
-        "WA": { "issuer": "Your local government", "renewal": null, "verified": false, "note": "Not confirmed from an official source.", "last_checked": "2026-11-01" },
-        "SA": { "issuer": "Your local council", "renewal": null, "verified": false, "note": "Not confirmed from an official source.", "last_checked": "2026-11-01" },
-        "TAS": { "issuer": "Your local council", "renewal": null, "verified": false, "note": "Not confirmed from an official source.", "last_checked": "2026-11-01" },
-        "ACT": { "issuer": "ACT Health Protection Service", "renewal": null, "verified": false, "note": "Not confirmed from an official source.", "last_checked": "2026-11-01" },
-        "NT": { "issuer": "NT Health", "renewal": null, "verified": false, "note": "Not confirmed from an official source.", "last_checked": "2026-11-01" }
-      }
+        "NSW": {
+          "name": "Catering (and vulnerable persons licence if applicable)",
+          "issuer": "Local council; NSW Food Authority if you wholesale or serve 6+ vulnerable people (e.g. aged care)",
+          "renewal": null,
+          "url": "https://www.foodauthority.nsw.gov.au/retail/caterers",
+          "verified": false,
+          "note": "Requirements depend on who you cater for; renewal not confirmed.",
+          "last_checked": "2026-11-01"
+        },
+        "VIC": {
+          "issuer": "Your registering council (confirms your food premises class)",
+          "renewal": null,
+          "verified": false,
+          "note": "Catering may affect your class – not confirmed from an official source.",
+          "last_checked": "2026-11-01"
+        },
+        "QLD": {
+          "issuer": "Your local council",
+          "renewal": null,
+          "verified": false,
+          "note": "Not confirmed from an official source.",
+          "last_checked": "2026-11-01"
+        },
+        "WA": {
+          "issuer": "Your local government",
+          "renewal": null,
+          "verified": false,
+          "note": "Not confirmed from an official source.",
+          "last_checked": "2026-11-01"
+        },
+        "SA": {
+          "issuer": "Your local council",
+          "renewal": null,
+          "verified": false,
+          "note": "Not confirmed from an official source.",
+          "last_checked": "2026-11-01"
+        },
+        "TAS": {
+          "issuer": "Your local council",
+          "renewal": null,
+          "verified": false,
+          "note": "Not confirmed from an official source.",
+          "last_checked": "2026-11-01"
+        },
+        "ACT": {
+          "issuer": "ACT Health Protection Service",
+          "renewal": null,
+          "verified": false,
+          "note": "Not confirmed from an official source.",
+          "last_checked": "2026-11-01"
+        },
+        "NT": {
+          "issuer": "NT Health",
+          "renewal": null,
+          "verified": false,
+          "note": "Not confirmed from an official source.",
+          "last_checked": "2026-11-01"
+        }
+      },
+      "phase": 5
     }
   ]
 }
