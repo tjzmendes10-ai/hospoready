@@ -10,10 +10,13 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
+  <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
   <header class="site-header">
     <div class="container header-inner">
       <a href="./" class="logo"><span class="logo-mark" aria-hidden="true">✓</span> <span class="brand-name">HospoReady</span></a>
@@ -21,54 +24,86 @@
     </div>
   </header>
 
-  <main>
+  <main id="main">
     <!-- 1. Hero -->
     <section class="hero">
       <div class="container hero-inner">
-        <div class="hero-copy">
+        <div class="hero-copy reveal">
           <p class="eyebrow">For independent cafés, restaurants &amp; bars in NSW</p>
           <h1>Never miss a licence renewal again.</h1>
           <p class="lead">HospoReady keeps every licence, permit and certificate your venue needs in one place, and reminds you well before anything expires. Less paperwork, no nasty surprises.</p>
           <div class="hero-actions">
-            <a href="#waitlist" class="btn">Join the waitlist</a>
-            <a href="#how" class="link-arrow">See how it works →</a>
+            <a href="#waitlist" class="btn" id="hero-cta">Join the waitlist</a>
+            <a href="#how" class="link-arrow">See how it works <span aria-hidden="true">→</span></a>
           </div>
           <p class="fine">Free to join. Launching in NSW first.</p>
         </div>
-        <div class="hero-card" aria-hidden="true">
-          <p class="card-title">Your venue · The Corner Café</p>
-          <ul class="status-list">
-            <li><span class="dot ok"></span>Food business registration<span class="tag ok">Current</span></li>
-            <li><span class="dot warn"></span>FSS certificate<span class="tag warn">Due in 21 days</span></li>
-            <li><span class="dot ok"></span>Outdoor dining approval<span class="tag ok">Current</span></li>
-            <li><span class="dot alert"></span>RSA – Sam K.<span class="tag alert">Expired</span></li>
-            <li><span class="dot ok"></span>Music licence<span class="tag ok">Current</span></li>
-          </ul>
+
+        <div class="hero-visual reveal">
+          <div class="phone" role="img" aria-label="Example HospoReady dashboard showing four licences: food business registration current with 214 days left, Food Safety Supervisor certificate expiring in 18 days, liquor licence current with 142 days left, and one staff RSA certificate expired.">
+            <div class="phone-notch" aria-hidden="true"></div>
+            <div class="phone-screen" aria-hidden="true">
+              <p class="phone-hello">Good morning, Corner Café</p>
+              <p class="phone-summary"><strong>1 needs attention</strong> · 1 expiring soon</p>
+              <ul class="licences">
+                <li class="licence ok" style="--fill: 0.59">
+                  <span class="dot"></span>
+                  <span class="licence-name">Food business registration</span>
+                  <span class="licence-days"><span class="countdown" data-to="214">214</span> days left</span>
+                  <span class="bar"><span></span></span>
+                </li>
+                <li class="licence warn" style="--fill: 0.05">
+                  <span class="dot"></span>
+                  <span class="licence-name">FSS certificate</span>
+                  <span class="licence-days"><span class="countdown" data-to="18">18</span> days left</span>
+                  <span class="bar"><span></span></span>
+                </li>
+                <li class="licence ok" style="--fill: 0.39">
+                  <span class="dot"></span>
+                  <span class="licence-name">Liquor licence</span>
+                  <span class="licence-days"><span class="countdown" data-to="142">142</span> days left</span>
+                  <span class="bar"><span></span></span>
+                </li>
+                <li class="licence alert" style="--fill: 0">
+                  <span class="dot"></span>
+                  <span class="licence-name">RSA · Sam K.</span>
+                  <span class="licence-days">Expired 3 days ago</span>
+                  <span class="bar"><span></span></span>
+                </li>
+              </ul>
+              <span class="phone-button">Renew Sam's RSA →</span>
+            </div>
+          </div>
+          <p class="scribble scribble-hero" aria-hidden="true">your whole venue, sorted!</p>
         </div>
       </div>
     </section>
 
     <!-- 2. The problem -->
     <section class="section problem" id="problem">
-      <div class="container">
-        <h2>Running a venue means juggling a pile of paperwork</h2>
-        <p class="section-lead">Your council, the NSW Government, industry bodies and licensing organisations each issue their own approvals, each with its own renewal date and rules. Nobody brings them together for you.</p>
-        <div class="grid three">
-          <div class="card">
-            <div class="icon" aria-hidden="true">🏛️</div>
-            <h3>Many issuers</h3>
-            <p>Council approvals, NSW Food Authority, Liquor &amp; Gaming NSW, music licensing bodies – all with separate portals and paperwork.</p>
+      <div class="container problem-inner">
+        <div class="problem-copy reveal">
+          <h2>Running a venue means juggling a pile of paperwork</h2>
+          <p class="section-lead">Your council, the NSW Government, industry bodies and licensing organisations each issue their own approvals, each with its own renewal date and rules. Nobody brings them together for you.</p>
+          <ul class="pain-points">
+            <li><strong>Many issuers.</strong> Separate portals, separate paperwork.</li>
+            <li><strong>Different dates.</strong> Some yearly, some every five years, staff certificates one person at a time.</li>
+            <li><strong>Costly to miss.</strong> Fines, failed inspections, or losing the right to trade until it's sorted.</li>
+          </ul>
+        </div>
+
+        <div class="notes-stage" id="notes-stage">
+          <div class="notes-card" aria-hidden="true">
+            <span class="logo-mark">✓</span> All in one place
           </div>
-          <div class="card">
-            <div class="icon" aria-hidden="true">📅</div>
-            <h3>Different dates</h3>
-            <p>Some renew yearly, some every five years, and staff certificates expire one person at a time. It's easy to lose track.</p>
-          </div>
-          <div class="card">
-            <div class="icon" aria-hidden="true">⚠️</div>
-            <h3>Costly to miss</h3>
-            <p>A lapsed licence or certificate can mean fines, failed inspections or even losing the right to trade until it's sorted.</p>
-          </div>
+          <ul class="notes" aria-label="Who issues what">
+            <li class="note" style="--i: 0"><span class="note-text"><span class="note-src">Council</span><span class="note-what">Outdoor dining approval</span></span><span class="dot ok" aria-hidden="true"></span></li>
+            <li class="note" style="--i: 1"><span class="note-text"><span class="note-src">NSW Food Authority</span><span class="note-what">Food business registration</span></span><span class="dot ok" aria-hidden="true"></span></li>
+            <li class="note" style="--i: 2"><span class="note-text"><span class="note-src">Service NSW</span><span class="note-what">Staff RSA certificates</span></span><span class="dot alert" aria-hidden="true"></span></li>
+            <li class="note" style="--i: 3"><span class="note-text"><span class="note-src">Liquor &amp; Gaming NSW</span><span class="note-what">Liquor licence</span></span><span class="dot ok" aria-hidden="true"></span></li>
+            <li class="note" style="--i: 4"><span class="note-text"><span class="note-src">OneMusic</span><span class="note-what">Music licence</span></span><span class="dot ok" aria-hidden="true"></span></li>
+            <li class="note" style="--i: 5"><span class="note-text"><span class="note-src">Training provider</span><span class="note-what">FSS certificate</span></span><span class="dot warn" aria-hidden="true"></span></li>
+          </ul>
         </div>
       </div>
     </section>
@@ -76,49 +111,99 @@
     <!-- 3. How it works -->
     <section class="section how" id="how">
       <div class="container">
-        <h2>How it works</h2>
+        <h2 class="reveal">How it works</h2>
         <ol class="steps">
-          <li>
-            <span class="step-num">1</span>
+          <li class="reveal">
+            <span class="step-num" aria-hidden="true">1</span>
             <h3>Answer a few questions</h3>
             <p>Tell us about your venue: what you serve, whether you sell alcohol, play music or have outdoor seating.</p>
           </li>
-          <li>
-            <span class="step-num">2</span>
+          <li class="reveal">
+            <span class="step-num" aria-hidden="true">2</span>
             <h3>Get your personalised checklist</h3>
             <p>See exactly which licences, permits and certificates apply to you, and add the dates you already have.</p>
           </li>
-          <li>
-            <span class="step-num">3</span>
+          <li class="reveal">
+            <span class="step-num" aria-hidden="true">3</span>
             <h3>Get reminders before anything expires</h3>
             <p>We'll nudge you well ahead of every renewal, so you have time to organise it without the last-minute scramble.</p>
           </li>
         </ol>
+
+        <!-- Mini interactive teaser -->
+        <div class="teaser reveal" id="teaser">
+          <div class="teaser-controls">
+            <h3>Try it: how many might your venue need?</h3>
+            <fieldset>
+              <legend class="visually-hidden">About your venue</legend>
+              <label class="switch">
+                <input type="checkbox" role="switch" data-adds="liquor rsa">
+                <span class="switch-track" aria-hidden="true"></span>
+                <span>Serve alcohol?</span>
+              </label>
+              <label class="switch">
+                <input type="checkbox" role="switch" data-adds="outdoor">
+                <span class="switch-track" aria-hidden="true"></span>
+                <span>Outdoor seating?</span>
+              </label>
+              <label class="switch">
+                <input type="checkbox" role="switch" data-adds="music">
+                <span class="switch-track" aria-hidden="true"></span>
+                <span>Play music?</span>
+              </label>
+            </fieldset>
+          </div>
+          <div class="teaser-result">
+            <p class="teaser-count" aria-live="polite"><span class="estimate-badge">Estimate</span> <span class="count" id="teaser-count">3</span> <span id="teaser-count-label">licences, permits &amp; certificates</span></p>
+            <ul class="teaser-list" id="teaser-list">
+              <li data-key="food">Food business registration</li>
+              <li data-key="fss">Food Safety Supervisor certificate</li>
+              <li data-key="signage">Signage approval (if you have signs)</li>
+              <li data-key="liquor" hidden>Liquor licence</li>
+              <li data-key="rsa" hidden>RSA certificates for serving staff</li>
+              <li data-key="outdoor" hidden>Outdoor dining approval</li>
+              <li data-key="music" hidden>Music licence</li>
+            </ul>
+            <p class="teaser-note">A rough estimate only. Your actual requirements depend on your venue, council and how you trade.</p>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- 4. What we'll track -->
+    <!-- 4. What we'll track (order docket) -->
     <section class="section permits" id="permits">
       <div class="container">
-        <h2>What HospoReady will track</h2>
-        <p class="section-lead">Starting with the essentials for NSW hospitality venues.</p>
-        <ul class="permit-list">
-          <li><strong>Food business registration</strong><span>Notification to the NSW Food Authority and your local council</span></li>
-          <li><strong>Food Safety Supervisor (FSS) certificate</strong><span>Required for most venues serving ready-to-eat food</span></li>
-          <li><strong>Liquor licence</strong><span>On-premises, small bar or hotel licences through Liquor &amp; Gaming NSW</span></li>
-          <li><strong>Staff RSA certificates</strong><span>Responsible Service of Alcohol, tracked for every staff member</span></li>
-          <li><strong>Outdoor dining permits</strong><span>Footpath and outdoor seating approvals from council</span></li>
-          <li><strong>Signage permits</strong><span>Approvals for A-frames, awnings and shopfront signs</span></li>
-          <li><strong>Music licensing</strong><span>Licences to play recorded or live music in your venue</span></li>
-        </ul>
+        <h2 class="reveal">Permits we track</h2>
+        <p class="section-lead reveal">Starting with the essentials for NSW hospitality venues.</p>
+
+        <div class="docket" id="docket">
+          <div class="docket-head">
+            <p class="docket-title">HOSPOREADY</p>
+            <p>ORDER #0001 · TABLE: YOUR VENUE</p>
+            <p>NSW · DINE IN</p>
+          </div>
+          <ul class="docket-items">
+            <li style="--i: 0"><span class="qty">1x</span><span class="item">Food business registration<small>NSW Food Authority &amp; council</small></span><span class="status">TRACKED</span></li>
+            <li style="--i: 1"><span class="qty">1x</span><span class="item">Food Safety Supervisor cert.<small>Most venues serving ready-to-eat food</small></span><span class="status">TRACKED</span></li>
+            <li style="--i: 2"><span class="qty">1x</span><span class="item">Liquor licence<small>Liquor &amp; Gaming NSW</small></span><span class="status">TRACKED</span></li>
+            <li style="--i: 3"><span class="qty">∞</span><span class="item">Staff RSA certificates<small>One for every staff member</small></span><span class="status">TRACKED</span></li>
+            <li style="--i: 4"><span class="qty">1x</span><span class="item">Outdoor dining permit<small>Footpath seating, from council</small></span><span class="status">TRACKED</span></li>
+            <li style="--i: 5"><span class="qty">1x</span><span class="item">Signage permits<small>A-frames, awnings, shopfront signs</small></span><span class="status">TRACKED</span></li>
+            <li style="--i: 6"><span class="qty">1x</span><span class="item">Music licensing<small>Recorded and live music</small></span><span class="status">TRACKED</span></li>
+          </ul>
+          <div class="docket-total">
+            <span>TOTAL</span><span>7 ITEMS · 0 SURPRISES</span>
+          </div>
+          <p class="scribble scribble-docket" aria-hidden="true">thanks! see you at renewal time</p>
+        </div>
       </div>
     </section>
 
     <!-- 5. Waitlist -->
     <section class="section waitlist" id="waitlist">
       <div class="container narrow">
-        <h2>Join the waitlist</h2>
-        <p class="section-lead">Be first to try HospoReady when we launch in NSW. We'll only email you about the launch.</p>
+        <h2 class="reveal">Join the waitlist</h2>
+        <p class="section-lead reveal">Be first to try HospoReady when we launch in NSW. We'll only email you about the launch.</p>
 
         <!--
           ===================== FORMSPREE PLACEHOLDER =====================
@@ -126,7 +211,7 @@
           (e.g. https://formspree.io/f/abcdwxyz -> "abcdwxyz").
           ================================================================
         -->
-        <form id="waitlist-form" class="form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+        <form id="waitlist-form" class="form reveal" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
           <div class="field">
             <label for="name">Your name</label>
             <input id="name" name="name" type="text" autocomplete="name" required>
@@ -163,6 +248,11 @@
       </div>
     </section>
   </main>
+
+  <!-- Sticky mobile call to action -->
+  <div class="sticky-cta" id="sticky-cta">
+    <a href="#waitlist" class="btn btn-full">Join the waitlist</a>
+  </div>
 
   <!-- 6. Footer -->
   <footer class="site-footer">
