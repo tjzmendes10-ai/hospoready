@@ -1,4 +1,4 @@
-// PermitPal – shared site script
+// HospoReady – shared site script
 
 (function () {
   var year = document.getElementById("year");

@@ -1,6 +1,6 @@
-# PermitPal
+# HospoReady
 
-Landing page for PermitPal (working name): one place for NSW cafés, restaurants and bars to track their licences, permits and certificates.
+Landing page for HospoReady (working name): one place for NSW cafés, restaurants and bars to track their licences, permits and certificates.
 
 Plain HTML, CSS and JavaScript, hosted on GitHub Pages. No build step.
 
@@ -21,7 +21,7 @@ data/               Future permit rules data (JSON)
 
 ## Renaming
 
-The name "PermitPal" appears in `index.html` (title, meta tags, header, footer, text) and `checklist/index.html`. Search and replace to rename.
+The name "HospoReady" appears in `index.html` (title, meta tags, header, footer, text) and `checklist/index.html`. Search and replace to rename.
 
 ---
 
