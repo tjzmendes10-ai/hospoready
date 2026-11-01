@@ -161,6 +161,7 @@
   if (planParam) selectPlan(planParam);
 
   var status = form.querySelector(".form-status");
+  var contactEmail = (window.HOSPOREADY_CONFIG || {}).contactEmail || "us";
   var button = form.querySelector("button[type=submit]");
 
   function setStatus(message, type) {
@@ -192,7 +193,7 @@
     }
 
     if (form.action.indexOf("YOUR_FORM_ID") !== -1) {
-      setStatus("Sorry, the waitlist isn't connected yet. Please email us at hello@example.com and we'll add you.", "error");
+      setStatus("Sorry, the waitlist isn't connected yet. Please email " + contactEmail + " and we'll add you.", "error");
       return;
     }
 
@@ -213,7 +214,7 @@
       .catch(function () {
         setStatus(navigator.onLine === false
           ? "You seem to be offline. Check your connection and try again."
-          : "Sorry, we couldn't add you just now. Please try again in a minute, or email us at hello@example.com.", "error");
+          : "Sorry, we couldn't add you just now. Please try again in a minute, or email " + contactEmail + ".", "error");
       })
       .finally(function () {
         button.disabled = false;
