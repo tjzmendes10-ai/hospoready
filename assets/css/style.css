@@ -1153,9 +1153,9 @@ textarea:focus { border-color: var(--green); }
 .compare-table th, .compare-table td { padding: 10px 9px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
 .compare-table tbody tr:last-child th, .compare-table tbody tr:last-child td { border-bottom: 0; }
 .compare-table thead th { font-family: var(--font-head); font-size: 1.05rem; color: var(--espresso); }
-.compare-table thead th:nth-child(2) { background: var(--green-light); border-radius: 0; }
-.compare-table tbody td:nth-child(2) { background: #f3f8f5; }
-.compare-table tbody th { font-weight: 700; color: var(--espresso); width: 34%; }
+.compare-table thead th:nth-child(3) { background: var(--green-light); border-radius: 0; }
+.compare-table tbody td:nth-child(3) { background: #f3f8f5; }
+.compare-table tbody th { font-weight: 700; color: var(--espresso); width: 25%; }
 .compare-sub { display: block; font-family: var(--font-body); font-size: 0.85rem; font-weight: 500; color: var(--muted); margin-top: 4px; }
 .compare-table .yes { color: var(--green); font-weight: 700; margin-right: 4px; }
 .compare-table .no { color: var(--muted); font-weight: 700; margin-right: 4px; }
@@ -1411,3 +1411,19 @@ body.inspect-open { overflow: hidden; }
 .feature-soon p { max-width: 36em; }
 @media (min-width: 720px) { .feature-grid > .feature-soon { grid-column: 1 / -1; } }
 @media (min-width: 960px) { .feature-grid > .feature-soon { grid-column: span 2; } }
+
+/* Comparison table: four columns scroll sideways on small screens, feature names stay in view */
+.compare-hint { text-align: center; font-size: 0.82rem; color: var(--muted); margin: -4px 0 8px; }
+.table-wrap:focus-visible { outline: 3px solid var(--green); outline-offset: 3px; border-radius: var(--radius); }
+@media (max-width: 719px) {
+  .compare-table { min-width: 600px; }
+  .compare-table tbody th, .compare-table thead th:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    background: var(--paper);
+    width: 110px;
+    box-shadow: 1px 0 0 var(--line);
+  }
+}
+@media (min-width: 720px) { .compare-hint { display: none; } }
