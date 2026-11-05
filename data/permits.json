@@ -1,7 +1,7 @@
 {
   "meta": {
     "schema_version": 1,
-    "last_updated": "2026-11-01",
+    "last_updated": "2026-11-05",
     "disclaimer": "General information only, not legal advice. Requirements vary by council. Always confirm with the issuing authority.",
     "how_to_edit": "Each permit has 'triggers' (when it applies) and either 'details' (same everywhere) or 'state_details' (per state/territory). Set 'verified' to false and add a 'note' for anything you could not confirm from an official source. Leave 'renewal' as null rather than guessing. 'phase' (1–5) orders items in the new-venue timeline. Only add a 'lead_time' if it is confirmed by an official source.",
     "states": {
@@ -353,67 +353,67 @@
       "state_details": {
         "NSW": {
           "issuer": "icare NSW (regulated by SIRA)",
-          "renewal": null,
-          "url": "https://www.safeworkaustralia.gov.au/law-and-regulation/whs-regulators-and-workers-compensation-authorities-contact-information",
-          "verified": false,
-          "note": "Insurer confirmed; policy renewal cycle not confirmed from an official source.",
-          "last_checked": "2026-11-01"
+          "renewal": "Every year – small employers' policies renew automatically; declare your actual wages to renew",
+          "url": "https://www.icare.nsw.gov.au/workers-compensation/employers/manage-your-policy/renew-your-policy",
+          "verified": true,
+          "note": "Not required if you pay $7,500 or less in wages a year, unless you employ apprentices.",
+          "last_checked": "2026-11-05"
         },
         "VIC": {
           "issuer": "WorkSafe Victoria",
-          "renewal": null,
-          "url": "https://www.safeworkaustralia.gov.au/law-and-regulation/whs-regulators-and-workers-compensation-authorities-contact-information",
-          "verified": false,
-          "note": "Insurer confirmed; policy renewal cycle not confirmed from an official source.",
-          "last_checked": "2026-11-01"
+          "renewal": "Every year – WorkSafe sends a renewal package",
+          "url": "https://www.worksafe.vic.gov.au/do-i-need-register-workcover-insurance",
+          "verified": true,
+          "lead_time": "Register within 60 days of first becoming eligible (wages over $7,500 a year, or any apprentices or trainees).",
+          "last_checked": "2026-11-05"
         },
         "QLD": {
           "issuer": "WorkCover Queensland",
           "renewal": "Every year – WorkCover contacts you each July. Take out a policy within 5 business days of employing someone.",
           "url": "https://ablis.business.gov.au/service/qld/workers-compensation-insurance/4104",
           "verified": true,
-          "last_checked": "2026-11-01",
-          "lead_time": "Take out a policy within 5 business days of employing someone."
+          "lead_time": "Take out a policy within 5 business days of employing someone.",
+          "last_checked": "2026-11-05"
         },
         "WA": {
-          "issuer": "Approved insurers (scheme regulated by WorkCover WA)",
-          "renewal": null,
-          "url": "https://www.safeworkaustralia.gov.au/law-and-regulation/whs-regulators-and-workers-compensation-authorities-contact-information",
-          "verified": false,
-          "note": "Regulator confirmed; policy renewal cycle not confirmed from an official source.",
-          "last_checked": "2026-11-01"
+          "issuer": "An approved insurer (scheme regulated by WorkCover WA)",
+          "renewal": "Every year – policies don't renew automatically; give your insurer a remuneration statement and confirm renewal",
+          "url": "https://www.workcover.wa.gov.au/employers/getting-an-insurance-policy/",
+          "verified": true,
+          "last_checked": "2026-11-05"
         },
         "SA": {
           "issuer": "ReturnToWorkSA",
           "renewal": null,
-          "url": "https://www.safeworkaustralia.gov.au/law-and-regulation/whs-regulators-and-workers-compensation-authorities-contact-information",
+          "url": "https://www.rtwsa.com/insurance/insurance-with-us/register",
           "verified": false,
-          "note": "Scheme confirmed; registration/renewal details not confirmed from an official source.",
-          "last_checked": "2026-11-01"
+          "note": "Registration requirement confirmed; renewal cycle not confirmed.",
+          "lead_time": "Register within 14 days of employing someone (you can register before they start).",
+          "last_checked": "2026-11-05"
         },
         "TAS": {
-          "issuer": "Licensed insurers (scheme regulated by WorkSafe Tasmania)",
+          "issuer": "A licensed insurer (scheme regulated by WorkSafe Tasmania)",
           "renewal": null,
-          "url": "https://www.safeworkaustralia.gov.au/law-and-regulation/whs-regulators-and-workers-compensation-authorities-contact-information",
+          "url": "https://worksafe.tas.gov.au/topics/compensation/workers-compensation/information-for-employers/workers-compensation-insurance",
           "verified": false,
-          "note": "Regulator confirmed; policy renewal cycle not confirmed from an official source.",
-          "last_checked": "2026-11-01"
+          "note": "You must hold a policy with a licensed insurer; renewal cycle not confirmed.",
+          "last_checked": "2026-11-05"
         },
         "ACT": {
-          "issuer": "Approved insurers (scheme regulated by WorkSafe ACT)",
+          "issuer": "An approved insurer (scheme regulated by WorkSafe ACT)",
           "renewal": null,
-          "url": "https://www.safeworkaustralia.gov.au/law-and-regulation/whs-regulators-and-workers-compensation-authorities-contact-information",
+          "url": "https://www.worksafe.act.gov.au/workers-compensation/how-to-get-workers-compensation",
           "verified": false,
-          "note": "Regulator confirmed; policy renewal cycle not confirmed from an official source.",
-          "last_checked": "2026-11-01"
+          "note": "You must keep a policy in force at all times; renewal cycle not confirmed.",
+          "last_checked": "2026-11-05"
         },
         "NT": {
-          "issuer": "Approved insurers (scheme regulated by NT WorkSafe)",
+          "issuer": "An approved insurer (scheme regulated by NT WorkSafe)",
           "renewal": null,
-          "url": "https://www.safeworkaustralia.gov.au/law-and-regulation/whs-regulators-and-workers-compensation-authorities-contact-information",
+          "url": "https://worksafe.nt.gov.au/workers-compensation/information-for-businesses",
           "verified": false,
-          "note": "Regulator confirmed; policy renewal cycle not confirmed from an official source.",
-          "last_checked": "2026-11-01"
+          "note": "You must hold a policy with an NT-approved insurer; renewal cycle not confirmed.",
+          "last_checked": "2026-11-05"
         }
       },
       "phase": 4
@@ -430,12 +430,12 @@
       },
       "state_details": {
         "NSW": {
-          "issuer": "Local council of the area you trade in",
-          "renewal": null,
+          "issuer": "The local council of each area where you store, prepare or sell food",
+          "renewal": "Varies by council – many trading approvals last up to 12 months",
           "url": "https://www.foodauthority.nsw.gov.au/retail/mobile-food-vendors",
-          "verified": false,
-          "note": "Councils regulate mobile vendors; renewal cycle and trading permits vary by council.",
-          "last_checked": "2026-11-01"
+          "verified": true,
+          "note": "Trading on public roads needs a separate council approval.",
+          "last_checked": "2026-11-05"
         },
         "VIC": {
           "name": "FoodTrader registration + statements of trade",
@@ -447,12 +447,13 @@
           "lead_time": "Councils advise allowing at least 14 days to register; lodge a statement of trade before each trading location."
         },
         "QLD": {
-          "issuer": "Local council where the vehicle is based",
-          "renewal": null,
-          "url": "https://www.business.qld.gov.au/starting-business/starting-buying/setting-up/licences-registrations",
-          "verified": false,
-          "note": "Not confirmed from an official source – check with your council.",
-          "last_checked": "2026-11-01"
+          "name": "Mobile food business licence",
+          "issuer": "A Queensland council – one licence covers the whole state",
+          "renewal": "Renewed regularly – the expiry date is set by the issuing council",
+          "url": "https://www.qld.gov.au/health/staying-healthy/food-pantry/starting-a-food-business/specific-requirements/mobile-food-businesses",
+          "verified": true,
+          "note": "Each council's local laws on roadside vending still apply.",
+          "last_checked": "2026-11-05"
         },
         "WA": {
           "issuer": "Local government",
@@ -479,12 +480,14 @@
           "last_checked": "2026-11-01"
         },
         "ACT": {
-          "issuer": "ACT Health Protection Service / Access Canberra",
-          "renewal": null,
-          "url": "https://www.accesscanberra.act.gov.au/business-and-work/hospitality-liquor-and-gaming/busking-and-trading-in-public-places",
-          "verified": false,
-          "note": "Not confirmed from an official source – check with Access Canberra.",
-          "last_checked": "2026-11-01"
+          "name": "Mobile food business registration + Hawkers Permit",
+          "issuer": "ACT Health Protection Service (registration); Access Canberra (free Hawkers Permit for public land)",
+          "renewal": "Food business registration every 1, 2 or 3 years",
+          "url": "https://www.act.gov.au/business/start-a-food-business",
+          "verified": true,
+          "lead_time": "Allow at least 10 business days for registration; a fit-out assessment and inspection come first.",
+          "note": "A Hawkers Permit is needed to trade on public land in one spot for more than 30 minutes.",
+          "last_checked": "2026-11-05"
         },
         "NT": {
           "issuer": "NT Health, plus council permits to trade",
@@ -656,12 +659,12 @@
           "last_checked": "2026-11-01"
         },
         "TAS": {
-          "issuer": "Registered training organisation (RTO)",
-          "renewal": null,
-          "url": "https://www.foodstandards.gov.au/business/food-safety/standard-322a-food-safety-management-tools",
-          "verified": false,
-          "note": "Standard 3.2.2A applies nationally; Tasmania-specific process not confirmed.",
-          "last_checked": "2026-11-01"
+          "issuer": "Registered training organisation (RTO); checked by council at inspections",
+          "renewal": "Training must be repeated at least every 5 years",
+          "url": "https://www.health.tas.gov.au/health-topics/food-safety/food-safety-businesses-and-community-organisations/food-safety-supervisor",
+          "verified": true,
+          "note": "If your FSS's training lapses, you have 30 days to retrain them or appoint another FSS.",
+          "last_checked": "2026-11-05"
         },
         "ACT": {
           "issuer": "Registered training organisation (RTO); notify ACT Health within 30 days of registration",
@@ -673,11 +676,10 @@
         },
         "NT": {
           "issuer": "Registered training organisation (RTO)",
-          "renewal": null,
-          "url": "https://www.foodstandards.gov.au/business/food-safety/standard-322a-food-safety-management-tools",
-          "verified": false,
-          "note": "Standard 3.2.2A applies nationally; NT-specific process not confirmed.",
-          "last_checked": "2026-11-01"
+          "renewal": "Skill set must have been completed within the last 5 years",
+          "url": "https://nt.gov.au/industry/hospitality/accommodation-and-food-businesses/food-safety-and-regulations/food-handler-hygiene/skills-and-knowledge-for-food-workers",
+          "verified": true,
+          "last_checked": "2026-11-05"
         }
       },
       "phase": 4
@@ -753,12 +755,11 @@
         },
         "TAS": {
           "issuer": "Approved RSA course providers (Liquor and Gaming Branch)",
-          "renewal": null,
-          "url": "https://www.treasury.tas.gov.au/liquor-and-gaming/liquor",
-          "verified": false,
-          "note": "No refresher requirement found, but not confirmed. New staff have up to 3 months while enrolled.",
-          "last_checked": "2026-11-01",
-          "lead_time": "New staff can work for up to 3 months while enrolled in an approved course."
+          "renewal": "Does not expire (an employer may ask you to update an old or interstate certificate)",
+          "url": "https://www.treasury.tas.gov.au/liquor-and-gaming/liquor/responsible-service-of-alcohol",
+          "verified": true,
+          "lead_time": "New staff can work for up to 3 months while enrolled in an approved course.",
+          "last_checked": "2026-11-05"
         },
         "ACT": {
           "issuer": "Access Canberra approved providers",
@@ -773,7 +774,7 @@
           "url": "https://nt.gov.au/industry/liquor/sell-serve-responsibly/responsible-service-of-alcohol",
           "verified": false,
           "note": "Official sources conflict: the Liquor Act/Licensing NT say a refresher every 3 years, the current NT Government page says 5 years.",
-          "last_checked": "2026-11-01"
+          "last_checked": "2026-11-05"
         }
       },
       "phase": 4
