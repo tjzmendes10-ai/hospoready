@@ -494,6 +494,7 @@ a { color: var(--green); }
 @keyframes bump { 50% { transform: scale(1.18); } }
 .teaser-list { list-style: none; margin: 0 0 14px; padding: 0; display: grid; gap: 6px; font-size: 0.95rem; }
 .teaser-list li { display: flex; align-items: center; gap: 8px; }
+.teaser-list li[hidden] { display: none; }
 .teaser-list li::before {
   content: "✓";
   display: inline-grid;
