@@ -1398,11 +1398,16 @@ body.inspect-open { overflow: hidden; }
 .footer-contact a { color: #fff; font-weight: 700; }
 
 /* Docket: wider quantity for "per staff member" */
-.docket-items li { grid-template-columns: minmax(30px, auto) 1fr auto; }
-.docket .qty-long { max-width: 74px; font-size: 0.72rem; line-height: 1.25; }
+.docket-items li { grid-template-columns: 62px 1fr auto; }
+.docket .qty-long { font-size: 0.62rem; line-height: 1.2; letter-spacing: -0.01em; }
 
 /* Long-form text pages (privacy) */
 .prose h2 { font-size: 1.45rem; margin-top: 1.6em; }
 .prose h2:first-child { margin-top: 0; }
 .prose ul { padding-left: 1.2em; margin: 0 0 1em; }
 .prose li { margin-bottom: 0.35em; }
+
+/* Features: let the last card fill the row so the grid has no gap */
+.feature-soon p { max-width: 36em; }
+@media (min-width: 720px) { .feature-grid > .feature-soon { grid-column: 1 / -1; } }
+@media (min-width: 960px) { .feature-grid > .feature-soon { grid-column: span 2; } }
