@@ -86,37 +86,53 @@
     window.addEventListener("resize", function () { layoutScatter(); onScroll(); });
   }
 
-  // ---- Permit estimate teaser ----
+  // ---- Permit estimate teaser: starts at 0 and builds up one item at a time ----
   var teaser = document.getElementById("teaser");
   if (teaser) {
+    var STEP_MS = 140;
     var countEl = document.getElementById("teaser-count");
-    var items = teaser.querySelectorAll(".teaser-list li");
+    var emptyEl = document.getElementById("teaser-empty");
+    var items = teaser.querySelectorAll(".teaser-list li[data-key]");
     var toggles = teaser.querySelectorAll("input[data-adds]");
+    var countTimers = [];
+
+    function setCount(n) {
+      if (countEl.textContent === String(n)) return;
+      countEl.textContent = n;
+      countEl.classList.remove("bump");
+      void countEl.offsetWidth;
+      countEl.classList.add("bump");
+    }
 
     function updateEstimate() {
       var active = {};
       toggles.forEach(function (t) {
         if (t.checked) t.getAttribute("data-adds").split(" ").forEach(function (k) { active[k] = true; });
       });
-      var count = 0;
+      countTimers.forEach(clearTimeout);
+      countTimers = [];
+
+      var newlyShown = [];
+      var kept = 0;
       items.forEach(function (li) {
-        var key = li.getAttribute("data-key");
-        var base = ["food", "fss", "signage"].indexOf(key) !== -1;
-        var show = base || active[key];
-        if (show && li.hidden) {
-          li.classList.remove("added");
-          void li.offsetWidth;
-          li.classList.add("added");
-        }
-        li.hidden = !show;
-        if (show) count++;
+        var show = !!active[li.getAttribute("data-key")];
+        if (!show) { li.hidden = true; li.classList.remove("added"); }
+        else if (li.hidden) newlyShown.push(li);
+        else kept++;
       });
-      if (countEl.textContent !== String(count)) {
-        countEl.textContent = count;
-        countEl.classList.remove("bump");
-        void countEl.offsetWidth;
-        countEl.classList.add("bump");
-      }
+
+      setCount(kept);
+      newlyShown.forEach(function (li, i) {
+        var delay = reduceMotion ? 0 : i * STEP_MS;
+        li.style.animationDelay = delay + "ms";
+        li.classList.remove("added");
+        li.hidden = false;
+        void li.offsetWidth;
+        li.classList.add("added");
+        if (delay === 0) setCount(kept + i + 1);
+        else countTimers.push(setTimeout(function () { setCount(kept + i + 1); }, delay));
+      });
+      emptyEl.hidden = (kept + newlyShown.length) > 0;
     }
 
     toggles.forEach(function (t) { t.addEventListener("change", updateEstimate); });

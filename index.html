@@ -194,6 +194,11 @@
             <fieldset>
               <legend class="visually-hidden">About your venue</legend>
               <label class="switch">
+                <input type="checkbox" role="switch" data-adds="food fss">
+                <span class="switch-track" aria-hidden="true"></span>
+                <span>Serve food?</span>
+              </label>
+              <label class="switch">
                 <input type="checkbox" role="switch" data-adds="liquor rsa">
                 <span class="switch-track" aria-hidden="true"></span>
                 <span>Serve alcohol?</span>
@@ -208,18 +213,24 @@
                 <span class="switch-track" aria-hidden="true"></span>
                 <span>Play music?</span>
               </label>
+              <label class="switch">
+                <input type="checkbox" role="switch" data-adds="signage">
+                <span class="switch-track" aria-hidden="true"></span>
+                <span>Signs out the front?</span>
+              </label>
             </fieldset>
           </div>
           <div class="teaser-result">
-            <p class="teaser-count" aria-live="polite"><span class="estimate-badge">Estimate</span> <span class="count" id="teaser-count">3</span> <span id="teaser-count-label">licences, permits &amp; certificates</span></p>
+            <p class="teaser-count" aria-live="polite"><span class="estimate-badge">Estimate</span> <span class="count" id="teaser-count">0</span> <span id="teaser-count-label">licences, permits &amp; certificates</span></p>
             <ul class="teaser-list" id="teaser-list">
-              <li data-key="food">Food business registration</li>
-              <li data-key="fss">Food Safety Supervisor certificate</li>
-              <li data-key="signage">Signage approval (if you have signs)</li>
+              <li class="teaser-empty" id="teaser-empty">Switch something on to see what your venue might need.</li>
+              <li data-key="food" hidden>Food business registration</li>
+              <li data-key="fss" hidden>Food Safety Supervisor certificate</li>
               <li data-key="liquor" hidden>Liquor licence</li>
               <li data-key="rsa" hidden>RSA certificates for serving staff</li>
               <li data-key="outdoor" hidden>Outdoor dining approval</li>
               <li data-key="music" hidden>Music licence</li>
+              <li data-key="signage" hidden>Signage approval</li>
             </ul>
             <p class="teaser-note">A rough estimate only. Your actual requirements depend on your state, council and how you trade.</p>
             <a href="checklist/" class="link-arrow teaser-link">Get your full checklist <span aria-hidden="true">→</span></a>
@@ -316,13 +327,11 @@
               <tbody>
                 <tr><th scope="row">Finds what you need</th><td><span class="yes" aria-hidden="true">✓</span> Personalised checklist</td><td><span class="yes" aria-hidden="true">✓</span> Personalised checklist</td><td><span class="yes" aria-hidden="true">✓</span> We work it out with you</td></tr>
                 <tr><th scope="row">Hospo Readiness Score</th><td><span class="yes" aria-hidden="true">✓</span> Yes</td><td><span class="yes" aria-hidden="true">✓</span> Yes</td><td><span class="yes" aria-hidden="true">✓</span> Yes</td></tr>
-                <tr><th scope="row">Links to official sources</th><td><span class="yes" aria-hidden="true">✓</span> Yes</td><td><span class="yes" aria-hidden="true">✓</span> Yes</td><td><span class="yes" aria-hidden="true">✓</span> Yes</td></tr>
                 <tr><th scope="row">Stores your documents</th><td><span class="no" aria-hidden="true">–</span> Not included</td><td><span class="yes" aria-hidden="true">✓</span> Yes</td><td><span class="yes" aria-hidden="true">✓</span> Yes</td></tr>
                 <tr><th scope="row">Expiry reminders</th><td><span class="no" aria-hidden="true">–</span> Not included</td><td><span class="yes" aria-hidden="true">✓</span> Yes</td><td><span class="yes" aria-hidden="true">✓</span> Yes</td></tr>
                 <tr><th scope="row">Staff certificate tracking</th><td><span class="no" aria-hidden="true">–</span> Not included</td><td><span class="yes" aria-hidden="true">✓</span> Yes</td><td><span class="yes" aria-hidden="true">✓</span> Yes</td></tr>
                 <tr><th scope="row">Prepares renewal paperwork</th><td><span class="no" aria-hidden="true">–</span> You do it</td><td><span class="no" aria-hidden="true">–</span> You do it, with reminders</td><td><span class="yes" aria-hidden="true">✓</span> We prepare and lodge renewals and applications for you.</td></tr>
                 <tr><th scope="row">Lodges it for you</th><td><span class="no" aria-hidden="true">–</span> You lodge it</td><td><span class="no" aria-hidden="true">–</span> You lodge it</td><td><span class="yes" aria-hidden="true">✓</span> Yes, included</td></tr>
-                <tr><th scope="row">Time required from you</th><td>About 2 minutes to build your checklist</td><td>A few minutes when a reminder arrives</td><td>Just check and sign</td></tr>
               </tbody>
             </table>
           </div>
@@ -343,6 +352,11 @@
             <span class="feature-icon" aria-hidden="true">🇦🇺</span>
             <h3>Made for Australian rules</h3>
             <p>Covers all 8 states and territories, with every checklist item linked to its official government source and the date we last checked it.</p>
+          </li>
+          <li class="trust-card reveal">
+            <span class="feature-icon" aria-hidden="true">🏛️</span>
+            <h3>Honest about what varies by council</h3>
+            <p>Some rules change from one council to the next. Where we can't confirm something, we say so and point you to your council instead of guessing.</p>
           </li>
           <li class="trust-card reveal">
             <span class="feature-icon" aria-hidden="true">🔒</span>
