@@ -2,7 +2,7 @@
 // Rules come from /data/permits.json
 
 (function () {
-  var DATA_URL = "../data/permits.json";
+  var DATA_URL = "../data/permits.json?v=62527ba3";
   var STORAGE_KEY = "hospoready-checklist";
   var TICKS_KEY = "hospoready-readiness";
   var GROUP_ORDER = ["federal", "state", "council", "staff", "other"];
